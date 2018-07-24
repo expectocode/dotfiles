@@ -1,0 +1,15 @@
+source ~/scripts/lemonbar/bar_colours
+# gives us bar_bg and bar_fg
+
+bar_height=30
+bar_font_family="Hack-10"
+bar_icon_font="MaterialIcons-13"
+
+admiral | lemonbar -pb \
+		  -a 20 \
+		  -g x"$bar_height" \
+		  -f "$bar_font_family" \
+		  -f "$bar_icon_font" \
+		  -B "$bar_bg" \
+		  -F "$bar_fg" \
+		| bash

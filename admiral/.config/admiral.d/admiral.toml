@@ -1,0 +1,48 @@
+[admiral]
+items = ["left", "workspaces",
+         "center", "music",
+         "right", "brightness", "spc", "freq", "battery", "spc", "clock", "spc"]
+
+[spc]
+static = true
+path = "echo ' '"
+
+[workspaces]
+path = "~/scripts/lemonbar/bspwm_workspaces.sh"
+
+[title]
+path = "xtitle -s -t 100"
+# long-running
+
+[freq]
+path = "echo -e '\uE01B' $(cpupower frequency-info| sed -n '12p'|awk '{print $4, $5}') ' '"
+reload = 3
+
+[battery]
+path = "~/scripts/lemonbar/battery.sh"
+reload = 2
+
+[brightness]
+# long running
+path = "~/scripts/lemonbar/brightness.sh"
+
+[clock]
+path = "echo -e '\uE192' $(date +'%l:%M %P')"
+reload = 3
+
+[music]
+path = "~/scripts/lemonbar/music.sh"
+# long-running
+
+# Used for formatting lemonbar
+[left]
+path = "echo '%{l}'"
+static = true
+
+[center]
+path = "echo '%{c}'"
+static = true
+
+[right]
+path = "echo '%{r}'"
+static = true

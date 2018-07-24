@@ -1,0 +1,18 @@
+alias rm="gio trash"
+alias ll="ls -lAhtr"
+alias python=python3
+alias pip=pip3
+alias b="cd /box"
+alias gpr="git pull --rebase"
+
+function yplay {
+youtube-dl --default-search=ytsearch: \
+           --youtube-skip-dash-manifest \
+           --output="${TMPDIR:-/tmp/}%(title)-s%(id)s.%(ext)s" \
+           --restrict-filenames \
+           --format="bestaudio[ext!=webm]" \
+           --exec=mplayer -vvv "$*"
+}
+vidplay () {
+        youtube-dl --default-search=ytsearch: --youtube-skip-dash-manifest --output="${TMPDIR:-/tmp/}%(title)-s%(id)s.%(ext)s" --restrict-filenames --format="[ext!=webm]" --exec=gnome-mpv -vvv "$*"
+}
