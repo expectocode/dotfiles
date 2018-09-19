@@ -1,7 +1,6 @@
 # terminal emulator
 super + Return
-    alacritty >/dev/null 2>&1
-    # TODO remove this redirection once logging bug is fixud
+    alacritty
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -200,8 +199,7 @@ super + shift + g
 	~/scripts/tg-desktop.sh
 
 super + shift + n
-    alacritty >/dev/null 2>&1 -e ncmpcpp
-    # TODO remove this redirection once logging bug is fixud
+    alacritty -e ncmpcpp
 
 super + shift + d
 	rofi -matching fuzzy -show run
@@ -212,3 +210,6 @@ super + shift + w
 super + x
 	xfce4-screenshooter
     # meh
+
+XF86Calculator
+    alacritty -e python3
