@@ -63,10 +63,15 @@ super + {p,b,comma,period}
 super + {_,shift + }c
 	bspc node -f {next,prev}.local
 
+# Focus the next/previous monitor
+super + Next
+# pagedown
+    ~/scripts/wm/focus_monitor.sh
+
 # focus the next/previous desktop in the current monitor
 # Programmer Dvorak layout
 super + {exclam, numbersign}
-	bspc desktop -f {prev,next}.local
+	bspc desktop -f {prev,next}
 
 # Focus the next/prev *occupied* desktop as above
 super + shift + {exclam, numbersign}
