@@ -6,7 +6,7 @@ bar_font_family="Hack-10"
 bar_icon_font="MaterialIcons-13"
 
 admiral | lemonbar -pb \
-		  -a 20 \
+		  -a 30 \
 		  -g x"$bar_height" \
 		  -f "$bar_font_family" \
 		  -f "$bar_icon_font" \
