@@ -28,6 +28,10 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   " commenting
   call dein#add('tpope/vim-commentary')
 
+  " undo tree
+  call dein#add('sjl/gundo.vim')
+
+
   " Autocomplete
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
@@ -36,6 +40,10 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   endif
   " Deoplete Rust
   "call dein#add('sebastianmarkow/deoplete-rust')
+
+  " julia
+  call dein#add('JuliaEditorSupport/julia-vim')
+
 
   call dein#add('autozimu/LanguageClient-neovim', {
       \ 'rev': 'next',
@@ -85,6 +93,9 @@ let g:LanguageClient_serverCommands = {
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+" gundo
+nnoremap <F2> :GundoToggle<CR>
 
 " End deoplete
 
