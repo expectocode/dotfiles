@@ -34,3 +34,5 @@ dunst &
 libinput-gestures-setup start &
 { udisksctl mount -b /dev/d/d; mpd; ~/scripts/lemonbar/bar_run ;} 2> /tmp/logg &
 compton --fading --fade-delta 2 &
+
+bash ~/scripts/lemonbar/bar_fullscreen.sh
