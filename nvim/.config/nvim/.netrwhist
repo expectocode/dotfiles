@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/tanuj/.config/rofi'
-let g:netrw_dirhist_2='/home/tanuj/code/dots/scripts/scripts/lemonbar'
-let g:netrw_dirhist_3='/home/tanuj/.local/share/nvim/site/pack'
