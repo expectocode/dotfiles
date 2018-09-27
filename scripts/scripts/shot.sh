@@ -5,6 +5,4 @@ if [[ $1 == "slopclip" ]]; then
 else
 	file=$(mktemp /tmp/XXXXX.png)
 	shotgun "$file" && gimp "$file"
-	# sleep 0.2
-	# scrot $file
 fi

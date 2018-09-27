@@ -28,11 +28,23 @@ bspc rule -a Screenkey manage=off
 # Autostart
 # TODO mpdris
 
+# Background
 ~/.fehbg &
+
+# Notifications
 dunst &
+
+# Set keyboard, set control tap = escape
 { setxkbmap -option ctrl:swapcaps -option compose:ralt; xcape -e 'Control_L=Escape;Control_R=Escape' ;} &
+
+# Swipe gestures
 libinput-gestures-setup start &
+
+# Mount media disk, start mpd, start bar
 { udisksctl mount -b /dev/d/d; mpd; ~/scripts/lemonbar/bar_run ;} 2> /tmp/logg &
+
+# Compositor
 compton --fading --fade-delta 2 &
 
-bash ~/scripts/lemonbar/bar_fullscreen.sh
+# Script to hide bar under fullscreen windows
+bash ~/scripts/lemonbar/bar_fullscreen.sh &
