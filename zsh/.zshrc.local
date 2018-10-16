@@ -4,6 +4,7 @@ alias python=python3
 alias pip=pip3
 alias b="cd /box"
 alias gpr="git pull --rebase"
+alias c="clear"
 
 function yplay {
 youtube-dl --default-search=ytsearch: \
