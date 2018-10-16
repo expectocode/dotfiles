@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/etc/NetworkManager/system-connections'
+let g:netrw_dirhist_2='/home/tanuj/code/oryza/backend/tls'
+let g:netrw_dirhist_3='/box/telegram-export'
+let g:netrw_dirhist_4='/home/tanuj/code/oryza/backend'
+let g:netrw_dirhist_5='/home/tanuj/code/oryza'
+let g:netrw_dirhist_6='/home/tanuj/code/oryza/backend'

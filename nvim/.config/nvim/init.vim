@@ -19,6 +19,9 @@ if dein#load_state('/home/tanuj/.local/share/dein')
 
   " Rust syntax
   call dein#add('rust-lang/rust.vim')
+
+  call dein#add('neovimhaskell/haskell-vim')
+
   " Base 16 colors
   call dein#add('chriskempson/base16-vim')
   " Autoformat for different langs
@@ -31,6 +34,8 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   " undo tree
   call dein#add('sjl/gundo.vim')
 
+  " Tabulize data
+  call dein#add('godlygeek/tabular')
 
   " Autocomplete
   call dein#add('Shougo/deoplete.nvim')
@@ -108,6 +113,13 @@ set showcmd
 " i think this is to do with line wrap doing words
 set formatoptions+=1
 set lbr
+
+set number
+set relativenumber
+set colorcolumn=80,100
+
+set wildmode=longest,list,full
+set wildmenu
 
 " write settings
 set confirm " confirm :q in case of unsaved changes
