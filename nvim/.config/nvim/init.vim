@@ -51,11 +51,7 @@ if dein#load_state('/home/tanuj/.local/share/dein')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
   " Deoplete Rust
-  "call dein#add('sebastianmarkow/deoplete-rust')
-
-  " julia
-  call dein#add('JuliaEditorSupport/julia-vim')
-
+  call dein#add('sebastianmarkow/deoplete-rust')
 
   call dein#add('autozimu/LanguageClient-neovim', {
       \ 'rev': 'next',
@@ -93,6 +89,7 @@ endif
 
 " Deoplete
 call deoplete#enable()
+let g:deoplete#auto_complete_delay=0
 let g:deoplete#sources#rust#racer_binary='/home/tanuj/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/home/tanuj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
@@ -124,7 +121,10 @@ set lbr
 
 set number
 set relativenumber
-set colorcolumn=80,100
+set colorcolumn=100
+set cursorline
+hi CursorLine ctermbg=235
+highlight ColorColumn ctermbg=235
 
 set wildmode=longest,list,full
 set wildmenu
