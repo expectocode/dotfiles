@@ -12,11 +12,11 @@ items = ["left", "workspaces",
 # Used for formatting lemonbar
 [mon_next]
 static = true
-path = "echo %{S+}"
+path   = "echo %{S+}"
 
 [spc]
 static = true
-path = "echo ' '"
+path   = "echo ' '"
 
 [workspaces]
 path = "~/scripts/lemonbar/bspwm_workspaces.sh"
@@ -26,11 +26,11 @@ path = "xtitle -s -t 100"
 # long-running
 
 [freq]
-path = "echo -e '\uE01B' $(cpupower frequency-info| sed -n '12p'|awk '{print $4, $5}') ' '"
+path   = "echo -e '\uE01B' $(cpupower frequency-info| sed -n '12p'|awk '{print $4, $5}') ' '"
 reload = 3
 
 [battery]
-path = "~/scripts/lemonbar/battery.sh"
+path   = "~/scripts/lemonbar/battery.sh"
 reload = 2
 
 [brightness]
@@ -38,7 +38,7 @@ reload = 2
 path = "~/scripts/lemonbar/brightness.sh"
 
 [clock]
-path = "echo -e '\uE192' $(date +'%l:%M %P')"
+path   = "echo -e '\uE192' $(date +'%l:%M %P')"
 reload = 3
 
 [music]
@@ -47,13 +47,13 @@ path = "~/scripts/lemonbar/music.sh"
 
 # Used for formatting lemonbar
 [left]
-path = "echo '%{l}'"
+path   = "echo '%{l}'"
 static = true
 
 [center]
-path = "echo '%{c}'"
+path   = "echo '%{c}'"
 static = true
 
 [right]
-path = "echo '%{r}'"
+path   = "echo '%{r}'"
 static = true
