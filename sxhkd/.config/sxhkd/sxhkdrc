@@ -1,6 +1,6 @@
 # terminal emulator
 super + Return
-    alacritty
+    WINIT_HIDPI_FACTOR=1 alacritty
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -199,7 +199,7 @@ super + shift + g
 	~/scripts/tg-desktop.sh
 
 super + shift + n
-    alacritty -e ncmpcpp
+    WINIT_HIDPI_FACTOR=1 alacritty -e ncmpcpp
 
 super + shift + d
 	rofi -matching fuzzy -show run
@@ -212,4 +212,4 @@ super + x
     # meh
 
 XF86Calculator
-    alacritty -e python3
+    WINIT_HIDPI_FACTOR=1 alacritty -e python3
