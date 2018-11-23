@@ -20,7 +20,12 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   " Rust syntax
   call dein#add('rust-lang/rust.vim')
 
+  " Haskell syntax
   call dein#add('neovimhaskell/haskell-vim')
+
+  " TOML syntax
+  call dein#add('cespare/vim-toml')
+
 
   " Base 16 colors
   call dein#add('chriskempson/base16-vim')
@@ -30,6 +35,8 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   call dein#add('haya14busa/dein-command.vim')
   " commenting
   call dein#add('tpope/vim-commentary')
+  " surroundings
+  call dein#add('tpope/vim-surround')
 
   " undo tree
   call dein#add('sjl/gundo.vim')
@@ -57,6 +64,7 @@ if dein#load_state('/home/tanuj/.local/share/dein')
 
   " Alignment
   call dein#add('tommcdo/vim-lion')
+
 
   " Startup profiler
   call dein#add('tweekmonster/startuptime.vim')
