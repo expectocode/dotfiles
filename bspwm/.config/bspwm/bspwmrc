@@ -23,6 +23,7 @@ xsetroot -cursor_name left_ptr
 bspc rule -a Gimp desktop='^6' follow=on
 bspc rule -a mplayer2 state=floating
 bspc rule -a Screenkey manage=off
+bspc rule -a TelegramDesktop:'Media viewer' state=fullscreen
 
 
 # Autostart
