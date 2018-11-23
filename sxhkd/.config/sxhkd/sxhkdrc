@@ -111,7 +111,7 @@ super + ctrl + {h,j,k,l}
 
 # preselect the ratio
 # super + ctrl + {1-9}
-super + ctrl + {ampersand,bracketleft,braceleft,braceright,parenleft,equal,asterisk,parenright,plus}
+super + ctrl + {parenleft, parenright, braceright, plus, braceleft, bracketright, bracketleft, exclam, equal}
 	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
