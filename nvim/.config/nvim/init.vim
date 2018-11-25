@@ -189,6 +189,8 @@ endif
 noremap n nzz
 noremap N Nzz
 
+" Insert close brace when typing open brace
+inoremap {<CR> {<CR>}<C-o>O
 
 " Put these lines at the very end of your vimrc file, for plugin :help
 
