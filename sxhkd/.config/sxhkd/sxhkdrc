@@ -189,6 +189,11 @@ super + v
     ~/scripts/vol.sh
 
 # Launch apps
+
+# lock and suspend
+super + n
+    sflock -h -c '*' -xshift -500 -f '-*-liberation sans-*-r-*-*-*-300-*-*-*-*-*-*' && sleep .5 && sudo systemctl suspend
+
 super + shift + b
 	firefox
 
