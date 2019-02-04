@@ -45,7 +45,10 @@ libinput-gestures-setup start &
 { udisksctl mount -b /dev/d/d; mpd; ~/scripts/lemonbar/bar_run ;} 2> /tmp/logg &
 
 # Compositor
-compton --fading --fade-delta 2 &
+compton &
 
 # Script to hide bar under fullscreen windows
 bash ~/scripts/lemonbar/bar_fullscreen.sh &
+
+# Sleep sometimes
+redshift -l 51:0 &
