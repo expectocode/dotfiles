@@ -17,7 +17,7 @@ commands
     set {int}(_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii+13) = (_ZNK5Image10pixRoundedEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii16ImageRoundRadiusNS0_5flagsI8RectPartEE) - (_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii + 17)
 
     # Make pins not notify by default
-    set {int}(_ZN13PinMessageBox7prepareEv+619) = 0x0
+    set {int}(_ZN13PinMessageBox7prepareEv+680) = 0x0
 end
 run
 detach
