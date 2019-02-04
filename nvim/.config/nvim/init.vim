@@ -20,6 +20,9 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   " Rust syntax
   call dein#add('rust-lang/rust.vim')
 
+  " Go syntax
+  call dein#add('fatih/vim-go')
+
   " Haskell syntax
   call dein#add('neovimhaskell/haskell-vim')
 
