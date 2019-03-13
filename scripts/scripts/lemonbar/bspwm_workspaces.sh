@@ -24,7 +24,7 @@ while read -r line; do
 					F*)
 						# focused free desktop
 						echo -n " %{A:bspc desktop -f $name:}"
-						echo -n "|"
+						echo -n "━"
 						echo -n "%{A} "
 						;;
 					o*)
@@ -36,7 +36,7 @@ while read -r line; do
 					O*)
 						# focused occupied desktop
 						echo -n " %{A:bspc desktop -f $name:}"
-						echo -n "▓"
+						echo -n "█"
 						echo -n "%{A} "
 						;;
 					u*)
