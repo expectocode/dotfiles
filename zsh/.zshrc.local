@@ -25,3 +25,5 @@ alias gc='git commit'
 alias gpr="git pull --rebase"
 alias ga='git add'
 alias qv='pqiv -ci'
+
+alias n=nvim
