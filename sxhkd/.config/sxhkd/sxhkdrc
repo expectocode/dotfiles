@@ -156,7 +156,7 @@ Print
 	~/scripts/shot.sh
 
 shift + Print
-	~/scripts/shot.sh slopclip
+	~/scripts/shot.sh selectclip
 
 XF86AudioLowerVolume
 	~/scripts/voldown.sh
