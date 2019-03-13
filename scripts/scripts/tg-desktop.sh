@@ -3,23 +3,49 @@
 gdb --args /usr/bin/telegram-desktop "$@" << EOF
 tbreak _ZN3App9initMediaEv
 commands
-    # TODO find a way to change this value (it's in RO data)
-    #set {int}(_ZN2st20historyMessageRadiusE) = 3
 
     # Make all circled images into rounded rectangles
-    set {char}(_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii+0) = 0x41
-    set {char}(_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii+1) = 0xB9
-    set {int}(_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii+2) = 0xFFFF
-    set {char}(_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii+6) = 0x41
-    set {char}(_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii+7) = 0xB8
-    set {int}(_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii+8) = 0x01
-    set {char}(_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii+12) = 0xE9
-    set {int}(_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii+13) = (_ZNK5Image10pixRoundedEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii16ImageRoundRadiusNS0_5flagsI8RectPartEE) - (_ZNK5Image10pixCircledEN4base16optional_variantIJ9FullMsgIdN4Data19FileOriginUserPhotoENS3_19FileOriginPeerPhotoENS3_20FileOriginStickerSetENS3_19FileOriginSavedGifsEEEEii + 17)
+    # Original code doesn't matter much
+    # This sets some arguments specific to pixRounded and jumps to it
+    # The first few arguments are in the same order so no need to touch them
+    # mov $0xffff,%r9d
+    set {short}(_ZNK5Image10pixCircledEN4Data10FileOriginEii+0) = 0xB941
+    set {int}(_ZNK5Image10pixCircledEN4Data10FileOriginEii+2) = 0xFFFF
+    # mov $0x1,%r8d
+    set {short}(_ZNK5Image10pixCircledEN4Data10FileOriginEii+6) = 0xB841
+    set {int}(_ZNK5Image10pixCircledEN4Data10FileOriginEii+8) = 0x01
+    # jmpq <_ZNK5Image10pixRoundedEN4Data10FileOriginEii16ImageRoundRadiusN4base5flagsI8RectPartEE>
+    set {char}(_ZNK5Image10pixCircledEN4Data10FileOriginEii+12) = 0xE9
+    set {int}(_ZNK5Image10pixCircledEN4Data10FileOriginEii+13) = (_ZNK5Image10pixRoundedEN4Data10FileOriginEii16ImageRoundRadiusN4base5flagsI8RectPartEE) - (_ZNK5Image10pixCircledEN4Data10FileOriginEii + 17)
 
     # Make pins not notify by default
-    set {int}(_ZN13PinMessageBox7prepareEv+680) = 0x0
+    # -mov $0x1,%ecx (imm part only)
+    # +mov $0x0,%ecx (imm part only)
+    set {int}(_ZN13PinMessageBox7prepareEv+424) = 0x0
+
+    # Remove conditional jumps in toggleTabbedSelectorMode to never put a sidebar
+    set {char [2]}(_ZN13HistoryWidget24toggleTabbedSelectorModeEv+80) = { 0x90, 0x90 }
+    # - 75 59                 jne 0x10b5468
+    # + 90 90                 nop nop
+    set {char [2]}(_ZN13HistoryWidget24toggleTabbedSelectorModeEv+92) = { 0x90, 0x90 }
+    # - 74 45                 je 0x10b5460
+    # + 90 90                 nop nop
+    set {char [2]}(_ZN13HistoryWidget24toggleTabbedSelectorModeEv+99) = { 0x90, 0x90 }
+    # - 74 3e                 je 0x10b5460
+    # + 90 90                 nop nop
+
+
+    # Never default to sending files uncompressed if other option exists
+    set {char}(_ZN12SendFilesBox11initSendWayEv+370) = 0x1
 end
 run
 detach
 quit
 EOF
+
+# TODO disable emoji panel on hover
+# hasan's stuff:
+    # set {char}(_ZN11ChatHelpers11TabbedPanel10otherEnterEv+0) = 0xc3
+
+    # - e9 ab ff ff ff        jmp sym.ChatHelpers::TabbedPanel::showAnimated
+    # + c3 90 90 90 90        ret; nop nop nop nop
