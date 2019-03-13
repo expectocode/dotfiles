@@ -17,6 +17,13 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   " Required:
   call dein#add('/home/tanuj/.local/share/dein/repos/github.com/Shougo/dein.vim')
 
+  " Command completion
+  call dein#add('Shougo/denite.nvim')
+  " , {'on_cmd': ['Denite', 'DeniteBufferDir', 'DeniteCursorWord', 'DeniteProjectDir']})
+
+  " Fuzzy finder
+  call dein#add('ctrlpvim/ctrlp.vim')
+
   " Rust syntax
   call dein#add('rust-lang/rust.vim')
 
@@ -96,21 +103,44 @@ let g:deoplete#auto_complete_delay=0
 let g:deoplete#sources#rust#racer_binary='/home/tanuj/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/home/tanuj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+
+" Denite up/down
+call denite#custom#map('insert', 'j', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', 'k', '<denite:move_to_previous_line>', 'noremap')
+map <space>bb :Denite buffer<cr>
+
+
+" CtrlP
+let g:ctrlp_follow_symlinks = 1
+" let g:ctrlp_show_hidden = 1
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 " Required for operations modifying multiple buffers like rename.
 set hidden
+
+" Window split navigation with Ctrl + hjkl
+nmap <silent> <C-k> :wincmd k<CR>
+nmap <silent> <C-j> :wincmd j<CR>
+nmap <silent> <C-h> :wincmd h<CR>
+nmap <silent> <C-l> :wincmd l<CR>
+
+" split resizing with Ctrl + arrows
+nmap <silent> <C-Up> :resize -5<CR>
+nmap <silent> <C-Down> :resize +5<CR>
+nmap <silent> <C-Left> :vertical resize +5<CR>
+nmap <silent> <C-Right> :vertical resize -5<CR>
 
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
     \ 'python': ['pyls'],
 \ }
 
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
 " gundo
 nnoremap <F2> :GundoToggle<CR>
-
-" End deoplete
 
 " display settings
 set encoding=utf-8 " encoding used for displaying file
@@ -200,6 +230,7 @@ inoremap {<CR> {<CR>}<C-o>O
 " Load all plugins now.
 " Plugins need to be added to runtimepath before helptags can be generated.
 packloadall
+
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
