@@ -122,6 +122,12 @@ let g:ctrlp_cmd = 'CtrlP'
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
+" HJKL but dvorak
+noremap s l
+noremap n k
+noremap t j
+noremap h h
+
 " Window split navigation with Ctrl + hjkl
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-j> :wincmd j<CR>
@@ -219,8 +225,8 @@ if has('autocmd')
 endif
 
 " center view on the search result
-noremap n nzz
-noremap N Nzz
+noremap j nzz
+noremap J Nzz
 
 " Insert close brace when typing open brace
 inoremap {<CR> {<CR>}<C-o>O
