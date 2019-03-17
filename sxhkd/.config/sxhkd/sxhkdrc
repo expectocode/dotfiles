@@ -46,11 +46,11 @@ super + ctrl + {m,x,y,z}
 #
 
 # focus the node in the given direction
-super + {h,t,n,s}
+super + {h,n,t,s}
 	~/scripts/wm/focus.sh {west, south, north, east}
 
 # Move windows with hjkl
-super + shift + {h, t, n, s}
+super + shift + {h,n,t,s}
 	~/scripts/wm/move.sh {west, south, north, east}
 
 
