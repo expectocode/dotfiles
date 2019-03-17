@@ -124,9 +124,19 @@ set hidden
 
 " HJKL but dvorak
 noremap s l
-noremap n k
-noremap t j
+noremap n j
+noremap t k
 noremap h h
+
+noremap j t
+noremap J T
+
+nnoremap T :join<CR>
+
+" center view on the search result
+noremap k nzz
+noremap K Nzz
+
 
 " Window split navigation with Ctrl + hjkl
 nmap <silent> <C-k> :wincmd k<CR>
@@ -223,10 +233,6 @@ if has('autocmd')
         " delete any trailing whitespaces
 		autocmd BufWritePre * :%s/\s\+$//ge
 endif
-
-" center view on the search result
-noremap j nzz
-noremap J Nzz
 
 " Insert close brace when typing open brace
 inoremap {<CR> {<CR>}<C-o>O
