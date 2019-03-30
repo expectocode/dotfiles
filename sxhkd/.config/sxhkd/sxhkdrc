@@ -203,7 +203,7 @@ super + shift + u
 super + shift + g
 	~/scripts/tg-desktop.sh
 
-super + shift + n
+super + shift + v
     WINIT_HIDPI_FACTOR=1 alacritty -e ncmpcpp
 
 super + shift + d
