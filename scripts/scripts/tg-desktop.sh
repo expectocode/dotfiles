@@ -36,7 +36,7 @@ commands
 
 
     # Never default to sending files uncompressed if other option exists
-    set {char}(_ZN12SendFilesBox11initSendWayEv+370) = 0x1
+    set {char}(_ZN12SendFilesBox11initSendWayEv+353) = 0x1
 end
 run
 detach
