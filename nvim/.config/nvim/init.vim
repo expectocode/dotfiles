@@ -131,6 +131,8 @@ noremap h h
 noremap j t
 noremap J T
 
+noremap x s
+
 nnoremap T :join<CR>
 
 " center view on the search result
