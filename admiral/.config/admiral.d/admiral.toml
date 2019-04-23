@@ -38,7 +38,7 @@ reload = 2
 path = "~/scripts/lemonbar/brightness.sh"
 
 [clock]
-path   = "echo -e '\uE192' $(date +'%l:%M %P')"
+path   = "echo -e '\uE192' $(date +'%H:%M')"
 reload = 3
 
 [music]
