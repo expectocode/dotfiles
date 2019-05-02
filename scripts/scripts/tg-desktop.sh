@@ -37,11 +37,6 @@ commands
 
     # Never default to sending files uncompressed if other option exists
     set {char}(_ZN12SendFilesBox11initSendWayEv+353) = 0x1
-
-
-    # Delete messages by default for other person in DMs
-    # movb   $0x0,0x100(%rsp)
-    set {char}(_ZN17DeleteMessagesBox7prepareEv+3846) = 0x01
 end
 run
 detach
