@@ -27,3 +27,6 @@ alias ga='git add'
 alias qv='pqiv -ci'
 
 alias n=nvim
+d () {
+    dict "$*" | less
+}
