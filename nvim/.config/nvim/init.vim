@@ -27,6 +27,9 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   " Rust syntax
   call dein#add('rust-lang/rust.vim')
 
+  " QML syntax
+  call dein#add('peterhoeg/vim-qml')
+
   " Go syntax
   call dein#add('fatih/vim-go')
 
