@@ -200,6 +200,9 @@ super + k
 super + shift + b
 	firefox
 
+super + shift + b
+    anki
+
 super + shift + u
     up # upload screenshot
 
