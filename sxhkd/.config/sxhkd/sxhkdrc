@@ -179,9 +179,6 @@ XF86AudioNext
 XF86AudioPlay
 	mpc toggle
 
-super + shift + m
-	mpc toggle
-
 XF86MonBrightnessUp
 	~/scripts/brightness.sh +4
 
@@ -200,7 +197,7 @@ super + k
 super + shift + b
 	firefox
 
-super + shift + b
+super + shift + m
     anki
 
 super + shift + u
