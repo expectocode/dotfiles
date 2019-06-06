@@ -24,6 +24,8 @@ alias gdc='git diff --cached'
 alias gc='git commit'
 alias gpr="git pull --rebase"
 alias ga='git add'
+alias gch='git checkout'
+alias gl='git log'
 alias qv='pqiv -ci'
 
 alias n=nvim
