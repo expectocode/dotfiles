@@ -1,5 +1,22 @@
 #!/bin/bash
 
+# Switch to tg if it's open (then exit script)
+
+for desktop in $(bspc query -D); do
+    case $(bspc query -T -d "$desktop") in
+        *TelegramDesktop*)
+            bspc desktop "$desktop" -f
+
+            for nid in $(bspc query -N -d "$desktop" -n .window); do
+                case $(xtitle "$nid") in
+                    *Telegram*)
+                        bspc node -f "$nid"
+                esac
+            done
+            exit
+    esac
+done
+
 gdb --args /usr/bin/telegram-desktop "$@" << EOF
 tbreak _ZN3App9initMediaEv
 commands
