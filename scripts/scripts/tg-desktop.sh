@@ -5,7 +5,7 @@
 for desktop in $(bspc query -D); do
     for nid in $(bspc query -N -d "$desktop" -n .window); do
         case $(xtitle "$nid") in
-            *TelegramDesktop*)
+            *Telegram*)
                 bspc desktop "$desktop" -f
                 bspc node -f "$nid"
                 exit
