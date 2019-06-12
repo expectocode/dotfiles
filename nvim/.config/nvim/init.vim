@@ -71,6 +71,9 @@ if dein#load_state('/home/tanuj/.local/share/dein')
       \ 'build': 'bash install.sh',
       \ })
 
+  " To quickly go back from "go to definition"
+  call dein#add('ipod825/vim-tabdrop')
+
   " Alignment
   call dein#add('tommcdo/vim-lion')
 
@@ -109,6 +112,14 @@ let g:deoplete#sources#rust#rust_source_path='/home/tanuj/.rustup/toolchains/sta
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+" Go to definition on C-], return on C-t
+nnoremap <C-]> :call Gotodef()<CR>
+nmap <C-t> :TabdropPopTag<Cr>
+
+function! Gotodef()
+    TabdropPushTag
+    call LanguageClient_textDocument_definition({'gotoCmd': 'Tabdrop'})
+endfunction
 
 " Denite up/down
 call denite#custom#map('insert', 'j', '<denite:move_to_next_line>', 'noremap')
@@ -137,6 +148,9 @@ noremap J T
 noremap x s
 
 nnoremap T :join<CR>
+
+" man page M
+noremap M K
 
 " center view on the search result
 noremap k nzz
@@ -203,8 +217,8 @@ let mapleader = ","
 " search settings
 set hlsearch " highlight search results
 set ignorecase " do case insensitive search...
-set incsearch " do incremental search
 set smartcase " ...unless capital letters are used
+set incsearch " do incremental search
 nnoremap <esc> :noh<return><esc>
 " make esc stop the highlighting
 
