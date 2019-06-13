@@ -20,7 +20,7 @@ vidplay () {
 
 alias gs='git status'
 alias gd='git diff'
-alias gdc='git diff --cached'
+alias gds='git diff --staged'
 alias gc='git commit'
 alias gpr="git pull --rebase"
 alias ga='git add'
