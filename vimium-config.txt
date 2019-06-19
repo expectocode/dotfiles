@@ -1,0 +1,91 @@
+# stolen https://github.com/pygman/config/blob/master/Vimium/mappings
+unmapAll
+############################################################
+                  Navigating the page
+###########################################################
+map u scrollDown # Scroll down <- j,<C-e>
+map p scrollUp # Scroll up <- k,<C-y>
+map P scrollToTop # Scroll to the top of the page <- gg
+map U scrollToBottom # Scroll to the bottom of the page <- G
+map i scrollPageDown # Scroll a half page down <- d
+map y scrollPageUp # Scroll a holf page up <- u
+# scrollFullPageDown # Scroll a full page down <-
+# scrollFullPageUp # Scroll a full page up <-
+map h scrollLeft # Scroll left <- h
+map n scrollRight # Scroll right <-l
+# scrollToLeft # Scroll all the way to the left <- zH
+# scrollToRight # Scroll all the way to the right <- zL
+# reload # Reload the page <- r
+# copyCurrentUrl # Copy the current URL to the clipboard <- yy
+# openCopiedUrlInCurrentTab # Open the clipboard's URL in the current tab <- p
+# openCopiedUrlInNewTab # Open the clipboard's URL in a new tab <- P
+# goUp # Go up the URL hierarchy <- gu
+# goToRoot # Go to root of current URL hierarchy <- gU
+# map i enterInsertMode # Enter insert mode <- i
+map v enterVisualMode # Enter visual mode <- v
+map V enterVisualLineMode # Enter visual line mode <- V
+# passNextKey # Pass the next key to Chrome <-
+map ki focusInput # Focus the first text input on the page <- gi
+map e LinkHints.activateMode # Open a link in the current tab <- f
+# map E LinkHints.activateModeToOpenInNewTab # Open a link in a new tab <- F
+# LinkHints.activateModeToOpenInNewForegroundTab # Open a link in a new tab & switch to it <-
+map E LinkHints.activateModeWithQueue # Open multiple links in a new tab <- <a-f>
+# LinkHints.activateModeToDownloadLink # Download link url <-
+# LinkHints.activateModeToOpenIncognito # Open a link in incognito window <-
+map ye LinkHints.activateModeToCopyLinkUrl # Copy a link URL to the clipboard <- yf
+map [[ goPrevious # Follow the link labeled previous or < <- [[
+map ]] goNext # Follow the link labeled next or > <- ]]
+map kf nextFrame # Select the next frame on the page <- gf
+map kF mainFrame # Select the page's main/top frame <- gF
+map ~ Marks.activateCreateMode # Create a new mark <- m
+map ` Marks.activateGotoMode # Go to a mark `
+
+############################################################
+                  Using the vomnibar
+###########################################################
+map OO Vomnibar.activate # Open URL, bookmark or history entry <- o
+map oo Vomnibar.activateInNewTab # Open URL, bookmark or history entry in a new tab <- O
+map OB Vomnibar.activateBookmarks # Open a bookmark <- b
+map ob Vomnibar.activateBookmarksInNewTab # Open a bookmark in a new tab <- B
+map ot Vomnibar.activateTabSelection # Search through your open tabs <- T
+map ko Vomnibar.activateEditUrl # Edit the current URL <- ge
+map kO Vomnibar.activateEditUrlInNewTab # Edit the current URL and open in a new tab <- gE
+
+############################################################
+                       Using find
+###########################################################
+map / enterFindMode # Enter find mode <- /
+map r performFind # Cycle forward to the next find match <- n
+map g performBackwardsFind # Cycle backward to the previous find match <- N
+
+############################################################
+                  Navigating history
+###########################################################
+map q goBack # Go back in history <- H
+map j goForward # Go forward in history <- L
+
+############################################################
+                  Manipulating tabs
+###########################################################
+map b createTab # Create new tab <- t
+map , previousTab # Go one tab left <- J,gT
+map . nextTab # Go one tab right <- K,gt
+map ^ visitPreviousTab # Go to previously-visited tab <- ^
+map k, firstTab # Go to the first tab <- g0
+map k. lastTab # Go to the last tab <- g$
+map kj duplicateTab # Duplicate current tab <- yt
+map kp togglePinTab # Pin/unpin current tab <- <a-p>
+map ; removeTab # Close current tab <- x
+map : restoreTab # Restore closed tab <- X
+map W moveTabToNewWindow # Move tab to new window <- W
+# closeTabsOnLeft # Close tabs on the left <-
+# closeTabsOnRight # Close tabs on the right <-
+# closeOtherTabs # close all other tabs <-
+map <a-,> moveTabLeft # Move tab to the left <- <<
+map <a-.> moveTabRight # Move tab to the right <- >>
+
+############################################################
+                  Miscellaneous
+###########################################################
+map ? showHelp # Show help <- ?
+map ks toggleViewSource # View page source <- gs
