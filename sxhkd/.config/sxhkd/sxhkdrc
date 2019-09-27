@@ -169,14 +169,17 @@ shift + Print
 Print
 	~/scripts/shot.sh selectclip
 
-XF86AudioLowerVolume
-	~/scripts/voldown.sh
+{alt, } + XF86AudioLowerVolume
+	~/scripts/voldown.sh {bt, 1}
 
-XF86AudioRaiseVolume
-	~/scripts/volup.sh
+{alt, } + XF86AudioRaiseVolume
+	~/scripts/volup.sh {bt, 1}
 
-XF86AudioMute
-	~/scripts/mute.sh
+{alt, } +XF86AudioMute
+	~/scripts/mute.sh {bt, 1}
+
+{alt, } + super + v
+    ~/scripts/vol.sh {bt, 1}
 
 XF86AudioPrev
 	mpc prev
@@ -192,9 +195,6 @@ XF86MonBrightnessUp
 
 XF86MonBrightnessDown
 	~/scripts/brightness.sh -4
-
-super + v
-    ~/scripts/vol.sh
 
 # Launch apps
 

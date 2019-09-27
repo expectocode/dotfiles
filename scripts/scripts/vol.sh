@@ -1,3 +1,21 @@
 #!/usr/bin/env bash
-muted=$(pamixer --get-mute|grep true >/dev/null && echo "muted" || echo "not muted")
-notify-send "$(pamixer --get-volume)" "$muted"
+if (( $# > 0 )); then
+    sink=$1
+    if [[ $sink == "bt" ]]; then
+        # parse pactl to get the Bluetooth sink number
+        sink=$(pamixer --list-sinks | tail -n1 | cut -c1)
+    fi
+else
+    sink=1
+fi
+
+muted=$(pamixer --sink "$sink" --get-mute |
+        grep true >/dev/null &&
+            echo "muted" ||
+            echo "not muted")
+
+if [[ "$sink" == 1 ]]; then
+    notify-send "$(pamixer --sink "$sink" --get-volume)" "$muted"
+else
+    notify-send "$(pamixer --sink "$sink" --get-volume)" "$sink, $muted"
+fi

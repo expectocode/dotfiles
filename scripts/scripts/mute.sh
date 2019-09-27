@@ -1,11 +1,24 @@
 #!/bin/bash
+if (( $# > 0 )); then
+    sink=$1
+    if [[ $sink == "bt" ]]; then
+        # parse pactl to get the Bluetooth sink number
+        sink=$(pamixer --list-sinks | tail -n1 | cut -c1)
+    fi
+else
+    sink=1
+fi
 
-pamixer --toggle-mute
+pamixer --sink "$sink" --toggle-mute
 
-volume=$(pamixer --get-volume)
-mute=$(pamixer --get-mute)
+volume=$(pamixer --sink "$sink" --get-volume)
+mute=$(pamixer --sink "$sink" --get-mute)
 
 mplayer /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 
 [[ $mute == "true" ]] && muted="(m)" || muted=""
-notify-send "$volume $muted"
+if [[ "$sink" == 1 ]]; then
+    notify-send "$volume $muted"
+else
+    notify-send "$volume $muted" "$sink"
+fi
