@@ -1,9 +1,9 @@
 # terminal emulator
 super + Return
-    WINIT_HIDPI_FACTOR=1 alacritty
+    WINIT_HIDPI_FACTOR=1 /home/tanuj/.cargo/bin/alacritty
 
 super + shift + Return
-    alacritty
+    /home/tanuj/.cargo/bin/alacritty
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -170,16 +170,16 @@ Print
 	~/scripts/shot.sh selectclip
 
 {alt, } + XF86AudioLowerVolume
-	~/scripts/voldown.sh {bt, 1}
+	~/scripts/voldown.sh {bt, }
 
 {alt, } + XF86AudioRaiseVolume
-	~/scripts/volup.sh {bt, 1}
+	~/scripts/volup.sh {bt, }
 
 {alt, } +XF86AudioMute
-	~/scripts/mute.sh {bt, 1}
+	~/scripts/mute.sh {bt, }
 
 {alt, } + super + v
-    ~/scripts/vol.sh {bt, 1}
+    ~/scripts/vol.sh {bt, }
 
 XF86AudioPrev
 	mpc prev
