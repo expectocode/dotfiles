@@ -7,7 +7,7 @@ if (( $# > 0 )); then
         sink=$(pamixer --list-sinks | tail -n1 | cut -c1)
     fi
 else
-    sink=1
+    sink=0
 fi
 
 pamixer --sink "$sink" --increase 2
