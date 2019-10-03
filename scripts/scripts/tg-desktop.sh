@@ -48,8 +48,14 @@ commands
     # + 90 90                 nop nop
 
 
-    # Never default to sending files uncompressed if other option exists
-    set {char}(_ZN12SendFilesBox11initSendWayEv+353) = 0x1
+       # Always default to sending photo or album when possible (udf)
+    # callq <_ZNK6Window17SessionNavigation7sessionEv>
+    # -mov 0x74(%rax),%eax
+    # +xor %eax,%eax
+    # +nop
+    # cmp $0x2,%eax
+    set {short}(_ZN12SendFilesBox11initSendWayEv+105) = 0xC031
+    set {char}(_ZN12SendFilesBox11initSendWayEv+107) = 0x90
 end
 run
 detach
