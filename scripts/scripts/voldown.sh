@@ -1,5 +1,6 @@
 #!/bin/bash
-# VOLUME=$($pamixer --get-volume)
+default_sink=$(pamixer --list-sinks | head -n2 | tail -n1 | cut -c1)
+
 if (( $# > 0 )); then
     sink=$1
     if [[ $sink == "bt" ]]; then
@@ -7,7 +8,7 @@ if (( $# > 0 )); then
         sink=$(pamixer --list-sinks | tail -n1 | cut -c1)
     fi
 else
-    sink=0
+    sink="$default_sink"
 fi
 
 pamixer --sink "$sink" --decrease 2
