@@ -21,6 +21,7 @@ vidplay () {
         youtube-dl --default-search=ytsearch: --youtube-skip-dash-manifest --output="${TMPDIR:-/tmp/}%(title)-s%(id)s.%(ext)s" --restrict-filenames --format="[ext!=webm]" --exec=gnome-mpv -vvv "$*"
 }
 
+alias gsh='git show'
 alias gs='git status'
 alias gd='git diff'
 alias gds='git diff --staged'
