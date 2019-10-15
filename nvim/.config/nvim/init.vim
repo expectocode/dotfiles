@@ -242,17 +242,15 @@ if has('autocmd')
         autocmd FileType go setlocal noexpandtab
 
         " clean-up commands that run automatically on write; use with caution
-        if empty("b:disable_rewrite_empty")
 
-            " delete empty or whitespaces-only lines at the end of file
-            autocmd BufWritePre * :%s/\(\s*\n\)\+\%$//ge
+        " delete empty or whitespaces-only lines at the end of file
+        autocmd BufWritePre * :%s/\(\s*\n\)\+\%$//ge
 
-            " replace groups of empty or whitespaces-only lines with one empty line
-            "autocmd BufWritePre * :%s/\(\s*\n\)\{3,}/\r\r/ge
+        " replace groups of empty or whitespaces-only lines with one empty line
+        "autocmd BufWritePre * :%s/\(\s*\n\)\{3,}/\r\r/ge
 
-            " delete any trailing whitespaces
-            autocmd BufWritePre * :%s/\s\+$//ge
-        endif
+        " delete any trailing whitespaces
+        autocmd BufWritePre * :%s/\s\+$//ge
 endif
 
 " Insert close brace when typing open brace
