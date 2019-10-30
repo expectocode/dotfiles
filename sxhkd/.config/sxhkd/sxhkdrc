@@ -198,6 +198,10 @@ XF86MonBrightnessDown
 
 # Launch apps
 
+# lock
+super + shift + k
+    sflock -h -c '*' -f '-*-liberation sans-*-r-*-*-*-300-*-*-*-*-*-*'
+
 # lock and suspend
 super + k
     sflock -h -c '*' -xshift -500 -f '-*-liberation sans-*-r-*-*-*-300-*-*-*-*-*-*' && sleep .5 && sudo systemctl suspend
