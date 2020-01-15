@@ -14,3 +14,6 @@ admiral | lemonbar -pb \
           -B "$bar_bg" \
           -F "$bar_fg" \
 		| bash
+
+# recursively kill child processes
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
