@@ -34,7 +34,7 @@ commands
     # Make pins not notify by default
     # -mov $0x1,%ecx (imm part only)
     # +mov $0x0,%ecx (imm part only)
-    set {int}(_ZN13PinMessageBox7prepareEv+424) = 0x0
+    # set {int}(_ZN13PinMessageBox7prepareEv+424) = 0x0
 
     # Remove conditional jumps in toggleTabbedSelectorMode to never put a sidebar
     set {char [2]}(_ZN13HistoryWidget24toggleTabbedSelectorModeEv+80) = { 0x90, 0x90 }
