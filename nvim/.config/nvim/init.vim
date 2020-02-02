@@ -39,6 +39,8 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   " TOML syntax
   call dein#add('cespare/vim-toml')
 
+  " Pest syntax
+  call dein#add('pest-parser/pest.vim')
 
   " Base 16 colors
   call dein#add('chriskempson/base16-vim')
