@@ -210,7 +210,7 @@ super + shift + k
 
 # lock and suspend
 super + k
-    sflock -h -c '*' -xshift -500 -f '-*-liberation sans-*-r-*-*-*-300-*-*-*-*-*-*' && sleep .5 && sudo systemctl suspend
+    sflock -h -c '*' -f '-*-liberation sans-*-r-*-*-*-300-*-*-*-*-*-*' && sleep .5 && sudo systemctl suspend
 
 super + shift + b
 	firefox
