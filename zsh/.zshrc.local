@@ -36,3 +36,16 @@ alias n=nvim
 d () {
     dict "$*" | less
 }
+
+backlight() {
+    level="$1"
+    if [[ ! -e /sys/class/backlight/ddcci6 ]]; then
+        (
+            echo "Loading kernel module"
+            cd ~/src/ddcci-driver-linux
+            sudo make load
+        )
+    fi
+
+    echo "$level" | sudo tee /sys/class/backlight/ddcci6/brightness
+}
