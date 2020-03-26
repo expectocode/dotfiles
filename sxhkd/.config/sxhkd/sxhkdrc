@@ -77,6 +77,9 @@ super + {_,shift + }c
 super + Next
 # pagedown
     ~/scripts/wm/focus_monitor.sh
+# Move window to next monitor
+super + shift +Next
+    bspc node --to-monitor next
 
 # focus the next/previous desktop in the current monitor
 # Programmer Dvorak layout
