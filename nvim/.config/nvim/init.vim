@@ -128,6 +128,8 @@ call denite#custom#map('insert', 'j', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', 'k', '<denite:move_to_previous_line>', 'noremap')
 map <space>bb :Denite buffer<cr>
 
+" Cargo fmt
+nmap <C-f> :RustFmt<CR>
 
 " CtrlP
 let g:ctrlp_follow_symlinks = 1
