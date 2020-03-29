@@ -1,7 +1,7 @@
 [admiral]
 items = ["left", "workspaces",
          "center", "music",
-         "right", "brightness", "spc", "battery", "spc", "clock", "spc",
+         "right", "governor", "spc", "bluetooth", "spc", "brightness", "spc", "battery", "spc", "clock", "spc",
          "mon_next", "left", "workspaces",
          "center", "music",
          "right", "spc", "battery", "spc", "clock", "spc",
@@ -28,6 +28,14 @@ path = "xtitle -s -t 100"
 [freq]
 path   = "echo -e '\uE01B' $(cpupower frequency-info| sed -n '12p'|awk '{print $4, $5}') ' '"
 reload = 3
+
+[governor]
+path   = 'cpupower frequency-info | grep -q "The governor \"performance" && echo -e "\ue80E" || echo -e "\uEA35"'
+reload = 5
+
+[bluetooth]
+path   = 'bluetoothctl <<< show | grep -q "Powered: no" && echo -e "\uE1A9" || echo -e "\uE1A7"'
+reload = 5
 
 [battery]
 path   = "~/scripts/lemonbar/battery.sh"
