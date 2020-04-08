@@ -28,6 +28,6 @@ music(){
 
 music
 while :; do
-	mpc idle
+	timeout 5 mpc idle
 	music
 done
