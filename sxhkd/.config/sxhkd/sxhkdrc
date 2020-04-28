@@ -169,11 +169,9 @@ super + shift + at
 	for i in $(bspc query -N -n '.leaf.!window.local'); do bspc node $i -k; done
 
 # custom scripts
-shift + Print
-	~/scripts/shot.sh
 
-Print
-	~/scripts/shot.sh selectclip
+{ ,shift, super} + Print
+	~/scripts/shot.sh {selectclip, , freeze}
 
 {alt, } + XF86AudioLowerVolume
 	~/scripts/voldown.sh {bt, }
