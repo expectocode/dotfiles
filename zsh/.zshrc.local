@@ -49,3 +49,11 @@ backlight() {
 
     echo "$level" | sudo tee /sys/class/backlight/ddcci6/brightness
 }
+
+hyperfine() {
+    performance=$(cpupower frequency-info | grep 'The governor "performance')
+    if [[ -z $performance ]]; then
+        echo "Warning: CPU governor is not set to performance." >&2
+    fi
+    command hyperfine "$@"
+}
