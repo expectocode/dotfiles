@@ -15,7 +15,7 @@ button8
     # echo down && sleep 0.15 && xdotool click --repeat 3 --delay 1 5
 
 button9
-    echo down && sleep 0.15 && xdotool click 2
+    ~/scripts/shot.sh selectclip
 
 #
 # bspwm hotkeys
