@@ -55,3 +55,6 @@ redshift -l 51:0 &
 
 # MPRIS for MPD
 mpDris2 --music-dir /run/media/tanuj/b4f61b23-ed88-4e28-bdd1-44bb8b8e36de/Music &
+
+# KDE Connect daemon
+/usr/libexec/kdeconnectd &
