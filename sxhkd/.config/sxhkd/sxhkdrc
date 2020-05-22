@@ -124,7 +124,7 @@ super + {slash, backslash}
 
 # preselect the direction
 super + ctrl + {h,t,n,s}
-	bspc node -p {west,south,north,east}
+	bspc node -p {west,north,south,east}
 
 # preselect the ratio
 # super + ctrl + {1-9}
