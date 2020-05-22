@@ -2,8 +2,40 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-colorscheme base16-eighties
+""" Top stuff applies to VS Code too.
 
+" search settings
+set hlsearch " highlight search results
+set ignorecase " do case insensitive search...
+set smartcase " ...unless capital letters are used
+set incsearch " do incremental search
+
+nnoremap <esc> :noh<return><esc>
+" make esc stop the highlighting
+
+" HJKL but dvorak
+noremap s l
+noremap n j
+noremap t k
+noremap h h
+
+noremap j t
+noremap J T
+
+noremap x s
+
+nnoremap T :join<CR>
+
+" man page M
+noremap M K
+
+" center view on the search result
+noremap k nzz
+noremap K Nzz
+
+if !exists('g:vscode')  " nearly everything should be non-vscode
+
+colorscheme base16-eighties
 
 " Begin dein section
 " Required:
@@ -26,6 +58,9 @@ if dein#load_state('/home/tanuj/.local/share/dein')
 
   " Rust syntax
   call dein#add('rust-lang/rust.vim')
+
+  " Class outline viewer
+  call dein#add('majutsushi/tagbar')
 
   " QML syntax
   call dein#add('peterhoeg/vim-qml')
@@ -65,8 +100,8 @@ if dein#load_state('/home/tanuj/.local/share/dein')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
   endif
-  " Deoplete Rust
-  call dein#add('sebastianmarkow/deoplete-rust')
+
+  let g:deoplete#enable_at_startup = 1 " for languageclient completion
 
   call dein#add('autozimu/LanguageClient-neovim', {
       \ 'rev': 'next',
@@ -137,28 +172,13 @@ let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+" Tagbar
+nmap <F8> :TagbarToggle<CR>
+
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
-" HJKL but dvorak
-noremap s l
-noremap n j
-noremap t k
-noremap h h
-
-noremap j t
-noremap J T
-
-noremap x s
-
-nnoremap T :join<CR>
-
-" man page M
-noremap M K
-
-" center view on the search result
-noremap k nzz
-noremap K Nzz
+set completeopt-=preview  " annoying preview window behaviour when completing
 
 
 " Window split navigation with Ctrl + hjkl
@@ -174,7 +194,7 @@ nmap <silent> <C-Left> :vertical resize +5<CR>
 nmap <silent> <C-Right> :vertical resize -5<CR>
 
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rust-analyzer'],
     \ 'python': ['pyls'],
 \ }
 
@@ -217,14 +237,6 @@ set tabstop=4 " set tabulator length to X columns
 " set textwidth=80 " wrap lines automatically at 80th column
 set mouse=a
 let mapleader = ","
-
-" search settings
-set hlsearch " highlight search results
-set ignorecase " do case insensitive search...
-set smartcase " ...unless capital letters are used
-set incsearch " do incremental search
-nnoremap <esc> :noh<return><esc>
-" make esc stop the highlighting
 
 " terminal settings
 set scrollback=10000
@@ -269,3 +281,5 @@ packloadall
 " Load all of the helptags now, after plugins have been loaded.
 " All messages and errors will be ignored.
 silent! helptags ALL
+
+endif " VS code
