@@ -7,7 +7,7 @@ bar_icon_font="MaterialIcons-13"
 
 admiral | lemonbar -pb \
           -n "lemonpanel" \
-          -a 60 \
+          -a 100 \
           -g x"$bar_height" \
           -f "$bar_font_family" \
           -f "$bar_icon_font" \

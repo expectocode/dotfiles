@@ -6,6 +6,9 @@ items = ["left", "workspaces",
          "center", "music",
          "right", "spc", "battery", "spc", "clock", "spc",
 
+         "mon_next", "left", "workspaces",
+         "center", "music",
+         "right", "spc", "battery", "spc", "clock", "spc",
          ]
 
 

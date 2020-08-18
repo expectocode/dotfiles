@@ -104,11 +104,11 @@ super + {o,i}
 # super + {_,ctrl + }{1-9,0}
 # Programmer dvorak layout
 super + {_, shift + }{ampersand,bracketleft,braceleft,braceright,parenleft,equal,asterisk,parenright,plus,bracketright}
-	bspc {desktop -f,node -d} '^{1-9, 10}'
+	bspc {desktop -f,node -d} '{1-9,10}'
 	# bspc {desktop -f,node -d} '^{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}'
 
 super + alt + {_, shift + }{ampersand,bracketleft,braceleft,braceright,parenleft,equal,asterisk,parenright,plus,bracketright}
-	bspc {desktop -f, node -d} '^{11, 12, 13, 14, 15, 16, 17, 18, 19, 20}'
+	bspc {desktop -f, node -d} '{11,12,13,14,15,16,17,18,19,20}'
 
 # Rotate the current subtree
 super + {_, shift} + r
