@@ -9,16 +9,25 @@ alias py=ptipython3
 alias b="cd /box"
 alias c="clear"
 
-function yplay {
-youtube-dl --default-search=ytsearch: \
-           --youtube-skip-dash-manifest \
-           --output="${TMPDIR:-/tmp/}%(title)-s%(id)s.%(ext)s" \
-           --restrict-filenames \
-           --format="bestaudio[ext!=webm]" \
-           --exec=mplayer -vvv "$*"
+function yplay() {
+    mpv \
+    --ytdl-format="bestaudio[ext!=webm]" \
+    --ytdl-raw-options=verbose=,youtube-skip-dash-manifest= \
+    --term-status-msg='
+${media-title}
+${?pause==yes:(Paused) }${playback-time}/${duration} (${percent-pos}%)
+' \
+    ytdl://ytsearch:"$*"
 }
-vidplay () {
-        youtube-dl --default-search=ytsearch: --youtube-skip-dash-manifest --output="${TMPDIR:-/tmp/}%(title)-s%(id)s.%(ext)s" --restrict-filenames --format="[ext!=webm]" --exec=gnome-mpv -vvv "$*"
+
+function vidplay() {
+    mpv \
+    --ytdl-raw-options=verbose=,youtube-skip-dash-manifest= \
+    --term-status-msg='
+${media-title}
+${?pause==yes:(Paused) }${playback-time}/${duration} (${percent-pos}%)
+' \
+    ytdl://ytsearch:"$*"
 }
 
 alias gsh='git show'
