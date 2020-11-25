@@ -1,10 +1,11 @@
 [admiral]
 items = ["left", "workspaces",
          "center", "music",
-         "right", "governor", "spc", "bluetooth", "spc", "brightness", "spc", "battery", "spc", "clock", "spc",
+         "right", "spc", "battery", "spc", "clock", "spc",
+
          "mon_next", "left", "workspaces",
          "center", "music",
-         "right", "spc", "battery", "spc", "clock", "spc",
+         "right", "governor", "spc", "bluetooth", "spc", "brightness", "spc", "battery", "spc", "clock", "spc",
 
          "mon_next", "left", "workspaces",
          "center", "music",
