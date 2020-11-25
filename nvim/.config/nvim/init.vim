@@ -142,7 +142,6 @@ endif
 
 " Deoplete
 call deoplete#enable()
-let g:deoplete#auto_complete_delay=0
 " let g:deoplete#sources#rust#racer_binary='/home/tanuj/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path='/home/tanuj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
@@ -196,6 +195,7 @@ nmap <silent> <C-Right> :vertical resize -5<CR>
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rust-analyzer'],
     \ 'python': ['pyls'],
+    \ 'cpp': ['clangd'],
 \ }
 
 " gundo
