@@ -1,19 +1,21 @@
 # A long-running script to print MPD updates for the bar
 
 music(){
-	song=$(mpc current -f "%artist% - %title%")
+    song=$(playerctl metadata --format "{{ title }}")
 
-	mpcstatus=$(mpc status | grep -E "(playing|paused)" -o)
-	if [ "$mpcstatus" == "playing" ]; then
-		icon='\uE034'
-	else
-		icon='\uE037'
-	fi
+    sstatus=$(playerctl status | grep -E "(Playing|Paused)" -o)
+    if [ "$sstatus" == "Playing" ]; then
+        echo play
+        icon='\uE034'
+    else
+        echo pause
+        icon='\uE037'
+    fi
 
-	if [ -z "$song" ]; then #if empty
-		fil=$(mpc current -f '%file%')
-		song="${fil##*/}"
-		# lmao does this work
+    if [ -z "$song" ]; then #if empty
+        fil=$(mpc current -f '%file%')
+        song="${fil##*/}"
+        # lmao does this work
         if [[ -z "$song" ]]; then # if still empty
             song=$(for nid in $(bspc query -N -d $(bspc query -D -d '^9') -n .window); do
                 xdotool getwindowname "$nid"
@@ -21,14 +23,12 @@ music(){
 
             icon='\uE034'
         fi
-	fi
+    fi
 
 
-	echo -e "%{A:mpc -q toggle:}$icon $song %{A}"
+    echo -e "%{A:timeout 0.3 playerctl play-pause:}$icon $song %{A}"
 }
 
-music
-while :; do
-	timeout 5 mpc idle
-	music
+{ playerctl status --follow & playerctl metadata --follow; } | while read _ ; do
+    music
 done

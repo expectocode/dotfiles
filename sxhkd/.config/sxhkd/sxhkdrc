@@ -202,13 +202,15 @@ super + dollar
     ~/scripts/vol.sh {bt, }
 
 XF86AudioPrev
-	mpc prev
+	timeout 0.3 playerctl previous
 
 XF86AudioNext
-	mpc next
+	timeout 0.3 playerctl next
 
 XF86AudioPlay
-	mpc toggle
+	timeout 0.3 playerctl play-pause
+XF86AudioPause
+	timeout 0.3 playerctl play-pause
 
 XF86MonBrightnessUp
 	~/scripts/brightness.sh +4
