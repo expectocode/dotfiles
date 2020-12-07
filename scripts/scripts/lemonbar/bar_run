@@ -4,9 +4,10 @@ source ~/scripts/lemonbar/bar_colours
 bar_height=30
 bar_font_family="Hack-10"
 bar_icon_font="MaterialIcons-13"
+name="lemonpanel"
 
-admiral | lemonbar -pb \
-          -n "lemonpanel" \
+admiral | lemonbar -b \
+          -n "$name" \
           -a 100 \
           -g x"$bar_height" \
           -f "$bar_font_family" \
@@ -17,3 +18,6 @@ admiral | lemonbar -pb \
 
 # recursively kill child processes
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+for m in $(bspc query -M); do xdo lower "$m"; done
+xdo lower -ma "$name"
