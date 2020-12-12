@@ -48,7 +48,7 @@ d () {
 
 backlight() {
     level="$1"
-    if [[ ! -e /sys/class/backlight/ddcci6 ]]; then
+    if [[ ! -e /sys/class/backlight/ddcci7 ]]; then
         (
             echo "Loading kernel module"
             cd ~/src/ddcci-driver-linux
@@ -56,7 +56,7 @@ backlight() {
         )
     fi
 
-    echo "$level" | sudo tee /sys/class/backlight/ddcci6/brightness
+    echo "$level" | sudo tee /sys/class/backlight/ddcci7/brightness
 }
 
 hyperfine() {
@@ -79,7 +79,7 @@ zstyle ':prompt:grml:left:setup' items rc virtual-env change-root \
                                        user at host path vcs percent
 
 function monplug() {
-    ~/.screenlayout/left-dp1.sh && bspc monitor DP-1 --reset-desktops $(seq 1 10)  && bspc monitor eDP-1 --reset-desktops $(seq 11 20) &&feh --bg-scale ~/Pictures/eighties-bg-alphabet.png
+    ~/.screenlayout/left-dp2.sh && bspc monitor DP-2 --reset-desktops $(seq 1 10)  && bspc monitor eDP-1 --reset-desktops $(seq 11 20) &&feh --bg-scale ~/Pictures/eighties-bg-alphabet.png
     sleep 0.5
     killall lemonbar; ~/scripts/lemonbar/bar_run&
     atreus_id=$(xinput | rg 'Atreus Keyboard'|cut -f 2|cut -d= -f2) &&  setxkbmap us -variant dvp -option ctrl:swapcaps -option compose:ralt && setxkbmap -device "$atreus_id" us -option && setxkbmap -device "$atreus_id" us -option compose:ralt

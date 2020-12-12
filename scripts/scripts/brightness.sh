@@ -4,7 +4,7 @@
 basedir="/sys/class/backlight/"
 
 # get the backlight handler
-handler=$(find "$basedir" |tail -n1)"/"
+handler=$(find "$basedir" | grep intel | tail -n1)"/"
 
 # get current brightness
 old_brightness=$(cat "$handler""brightness")
