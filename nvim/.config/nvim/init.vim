@@ -59,6 +59,9 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   " Rust syntax
   call dein#add('rust-lang/rust.vim')
 
+  " Elixir
+  call dein#add('elixir-editors/vim-elixir')
+
   " Class outline viewer
   call dein#add('majutsushi/tagbar')
 
