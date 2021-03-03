@@ -19,5 +19,8 @@ admiral | lemonbar -b \
 # recursively kill child processes
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-for m in $(bspc query -M); do xdo lower "$m"; done
+# for m in $(bspc query -M); do xdo lower "$m"; done
 xdo lower -ma "$name"
+xdo lower -a "eDP-1"
+xdo lower -a "DP-1"
+xdo lower -a "DP-2"

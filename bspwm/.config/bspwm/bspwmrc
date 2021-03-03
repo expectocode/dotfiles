@@ -48,7 +48,7 @@ libinput-gestures-setup start &
 compton &
 
 # Script to hide bar under fullscreen windows
-bash ~/scripts/lemonbar/bar_fullscreen.sh &
+# bash ~/scripts/lemonbar/bar_fullscreen.sh &
 
 # Sleep sometimes
 redshift -l 51:0 &
