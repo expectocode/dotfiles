@@ -1,7 +1,7 @@
 # A long-running script to print MPD updates for the bar
 
 music(){
-    song=$(playerctl metadata --format "{{ title }}")
+    song=$(playerctl metadata --format "{{ title }} · {{ artist }}")
 
     sstatus=$(playerctl status | grep -E "(Playing|Paused)" -o)
     if [ "$sstatus" == "Playing" ]; then
