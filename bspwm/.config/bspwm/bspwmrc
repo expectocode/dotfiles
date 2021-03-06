@@ -2,7 +2,10 @@
 
 sxhkd -m -1 &
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+xrandr --output DP-2 --off --output eDP-1 --mode 1920x1080 --rotate normal --output DP-1 --off
+bspc monitor DP-2 --remove
+bspc monitor DP-1 --remove
+bspc monitor eDP-1 --reset-desktops $(seq 1 20)
 
 bspc config border_width         3
 bspc config window_gap           8

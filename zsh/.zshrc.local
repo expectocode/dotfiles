@@ -83,6 +83,4 @@ function monplug() {
     sleep 0.5
     killall lemonbar; ~/scripts/lemonbar/bar_run&
     atreus_id=$(xinput | rg 'Atreus Keyboard'|cut -f 2|cut -d= -f2) &&  setxkbmap us -variant dvp -option ctrl:swapcaps -option compose:ralt && setxkbmap -device "$atreus_id" us -option && setxkbmap -device "$atreus_id" us -option compose:ralt
-
-    { cd ~; killall sxhkd; sleep 0.5; source .profile && sxhkd& }
 }
