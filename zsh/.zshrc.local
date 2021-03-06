@@ -84,3 +84,5 @@ function monplug() {
     killall lemonbar; ~/scripts/lemonbar/bar_run&
     atreus_id=$(xinput | rg 'Atreus Keyboard'|cut -f 2|cut -d= -f2) &&  setxkbmap us -variant dvp -option ctrl:swapcaps -option compose:ralt && setxkbmap -device "$atreus_id" us -option && setxkbmap -device "$atreus_id" us -option compose:ralt
 }
+
+if [ -e /home/tanuj/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tanuj/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
