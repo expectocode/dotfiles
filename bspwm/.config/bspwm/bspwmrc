@@ -34,17 +34,11 @@ bspc rule -a TelegramDesktop:'Media viewer' state=fullscreen
 # Background
 ~/.fehbg &
 
-# Notifications
-dunst &
-
 # Set keyboard, set control tap = escape
 { setxkbmap -option ctrl:swapcaps -option compose:ralt; xcape -e 'Control_L=Escape;Control_R=Escape;#37=Escape' ;} &
 
 # Mount media disk, start mpd, start bar
 { udisksctl mount -b /dev/d/d; ~/scripts/lemonbar/bar_run ;} 2> /tmp/logg &
-
-# Compositor
-compton &
 
 # Script to hide bar under fullscreen windows
 # bash ~/scripts/lemonbar/bar_fullscreen.sh &
