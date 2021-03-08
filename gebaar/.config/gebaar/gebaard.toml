@@ -1,0 +1,9 @@
+[commands.swipe.four]
+right = "bspc desktop -f next.local.occupied"
+left = "bspc desktop -f prev.local.occupied"
+up = "rofi -show combi"
+
+[commands.swipe.three]
+# Browser forward-backward
+right = "xdotool key alt+Right"
+left = "xdotool key alt+Left"
