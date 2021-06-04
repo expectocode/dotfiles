@@ -214,8 +214,12 @@ XF86AudioPause
 
 XF86MonBrightnessUp
 	~/scripts/brightness.sh +4
+alt + super + Up
+	~/scripts/brightness.sh +4
 
 XF86MonBrightnessDown
+	~/scripts/brightness.sh -4
+alt + super + Down
 	~/scripts/brightness.sh -4
 
 # Launch apps
