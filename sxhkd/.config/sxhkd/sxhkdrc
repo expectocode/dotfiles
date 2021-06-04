@@ -243,8 +243,11 @@ super + shift + g
 super + shift + v
     WINIT_HIDPI_FACTOR=1 alacritty -e ncmpcpp
 
-super + shift + d
+super + d
 	rofi -matching fuzzy -show run
+
+super + shift + d
+	rofi -matching fuzzy -show drun
 
 super + shift + w
 	rofi -matching fuzzy -show window
