@@ -1,3 +1,4 @@
 configuration {
 	theme: "base16-eighties";
+    modi: "window,ssh,drun";
 }
