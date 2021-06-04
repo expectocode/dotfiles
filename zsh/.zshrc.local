@@ -83,6 +83,15 @@ function monplug() {
     sleep 0.5
     killall lemonbar; ~/scripts/lemonbar/bar_run&
     atreus_id=$(xinput | rg 'Atreus Keyboard'|cut -f 2|cut -d= -f2) &&  setxkbmap us -variant dvp -option ctrl:swapcaps -option compose:ralt && setxkbmap -device "$atreus_id" us -option && setxkbmap -device "$atreus_id" us -option compose:ralt
+    bspc config bottom_padding 30
 }
 
 if [ -e /home/tanuj/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tanuj/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+function fixcamera() {
+    v4l2-ctl -d 4 --set-ctrl=white_balance_temperature_auto=0
+    v4l2-ctl -d 4 --set-ctrl=white_balance_temperature=3100
+}
+source ~/src/zui/zui.plugin.zsh  # for zzcomplete
+source ~/src/zzcomplete/zzcomplete.plugin.zsh
+any-nix-shell zsh --info-right | source /dev/stdin
