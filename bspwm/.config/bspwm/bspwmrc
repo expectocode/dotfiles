@@ -43,8 +43,5 @@ bspc rule -a TelegramDesktop:'Media viewer' state=fullscreen
 # Script to hide bar under fullscreen windows
 # bash ~/scripts/lemonbar/bar_fullscreen.sh &
 
-# Sleep sometimes
-redshift -l 51:0 &
-
 bspc rule -a KeePassXC:keepassxc -o desktop=10
 keepassxc &
