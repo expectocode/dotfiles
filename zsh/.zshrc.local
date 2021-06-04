@@ -2,7 +2,7 @@ export _Z_CMD=g
 . ~/src/z/z.sh
 
 alias rm="gio trash"
-alias ll="ls -lAhtr"
+alias ll="exa -la -s newest"
 alias python=python3
 alias pip=pip3
 alias py=ptipython3
