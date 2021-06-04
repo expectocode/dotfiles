@@ -218,7 +218,7 @@ set formatoptions+=1
 set lbr
 
 set number
-set relativenumber
+" set relativenumber
 set colorcolumn=100
 set cursorline
 hi CursorLine ctermbg=235
