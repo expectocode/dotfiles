@@ -257,6 +257,10 @@ filetype indent on " automatically indent code
 if has('autocmd')
         " file type specific automatic commands
 
+        " Jamal FPSP simulator source files
+        autocmd BufRead,BufNewFile *.jss setlocal filetype=jss
+
+
         " disable automatic code indentation when editing TeX and XML files
         autocmd FileType tex,xml setlocal indentexpr=
 
