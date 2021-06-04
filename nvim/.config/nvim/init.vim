@@ -97,6 +97,9 @@ if dein#load_state('/home/tanuj/.local/share/dein')
   " Tabulize data
   call dein#add('godlygeek/tabular')
 
+  " nix
+  call dein#add('LnL7/vim-nix')
+
   " Autocomplete
   call dein#add('Shougo/deoplete.nvim')
   if !has('nvim')
