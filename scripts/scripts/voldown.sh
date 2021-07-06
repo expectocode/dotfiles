@@ -1,5 +1,5 @@
 #!/bin/bash
-default_sink=$(pamixer --list-sinks | head -n2 | tail -n1 | cut -c1)
+default_sink=$(pamixer --list-sinks | head -n2 | tail -n1 | cut -d' ' -f1)
 
 if (( $# > 0 )); then
     sink=$1
