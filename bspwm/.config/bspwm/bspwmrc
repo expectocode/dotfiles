@@ -1,7 +1,5 @@
 #! /bin/sh
 
-sxhkd -m -1 &
-
 xrandr --output DP-2 --off --output eDP-1 --mode 1920x1080 --rotate normal --output DP-1 --off
 bspc monitor DP-2 --remove
 bspc monitor DP-1 --remove
