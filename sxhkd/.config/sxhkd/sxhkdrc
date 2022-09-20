@@ -31,6 +31,8 @@ super + {_,shift + }semicolon
 
 super + {_,shift + }minus
 	bspc node -{c,k}
+super + {_,shift + }BackSpace
+	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
 super + m
