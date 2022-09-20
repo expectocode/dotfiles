@@ -90,7 +90,7 @@ if [ -e /home/tanuj/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tanuj/.nix
 
 function fixcamera() {
     v4l2-ctl -d 4 --set-ctrl=white_balance_temperature_auto=0
-    v4l2-ctl -d 4 --set-ctrl=white_balance_temperature=3100
+    v4l2-ctl -d 4 --set-ctrl=white_balance_temperature=2800
 }
 source ~/src/zui/zui.plugin.zsh  # for zzcomplete
 source ~/src/zzcomplete/zzcomplete.plugin.zsh
