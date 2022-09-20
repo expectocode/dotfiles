@@ -14,7 +14,7 @@ admiral | lemonbar -b \
           -f "$bar_icon_font" \
           -B "$bar_bg" \
           -F "$bar_fg" \
-		| bash
+		| while read -r line; do eval "$line"; done ;
 
 # recursively kill child processes
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
@@ -24,3 +24,5 @@ xdo lower -ma "$name"
 xdo lower -a "eDP-1"
 xdo lower -a "DP-1"
 xdo lower -a "DP-2"
+xdo lower -a "DP-1-1"
+xdo lower -a "DP-2-1"
