@@ -149,8 +149,6 @@
 frame_width = 6
 frame_color = "#2d2d2d"
 
-[shortcuts]
-
     # Shortcuts are specified as [modifier+][modifier+]...key
     # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
     # "mod3" and "mod4" (windows-key).
@@ -165,10 +163,10 @@ frame_color = "#2d2d2d"
     # Redisplay last message(s).
     # On the US keyboard layout "grave" is normally above TAB and left
     # of "1".
-    history = ctrl+numbersign
+    history = ctrl+mod4+l
 
     # Context menu.
-    context = ctrl+shift+period
+    context = ctrl+mod4+r
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
