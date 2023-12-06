@@ -8,7 +8,7 @@ name="lemonpanel"
 
 admiral | lemonbar -b \
           -n "$name" \
-          -a 100 \
+          -a 200 \
           -g x"$bar_height" \
           -f "$bar_font_family" \
           -f "$bar_icon_font" \
@@ -26,3 +26,4 @@ xdo lower -a "DP-1"
 xdo lower -a "DP-2"
 xdo lower -a "DP-1-1"
 xdo lower -a "DP-2-1"
+xdo lower -a "DP-2-8"
