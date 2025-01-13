@@ -1,0 +1,97 @@
+{
+    "position": "bottom",
+    "margin-bottom" : 5,
+    "margin-top": -2,
+    "margin-left": 0,
+    "margin-right": 5,
+    "height" : 30,
+    "modules-left": [
+      "mpris",
+      "niri/window",
+    ],
+    "modules-center": [
+      "niri/workspaces",
+    ],
+    "modules-right": [
+    "pulseaudio",
+    "bluetooth",
+    "battery",
+    "clock",
+    ],
+//    "bluetooth": {
+//      "format": "\uE1A7 CHCH{status}",
+//    },
+    "mpris": {
+      "title-len": 35,
+      "format": "{player_icon} {title}",
+      "format-paused": "{status_icon} {title}",
+      "player-icons": {
+        "default": "\uf04b",
+        "mpv": "🎵"
+      },
+      "status-icons": {
+        "paused": "\uf04c"
+      },
+    },
+    "bluetooth": {
+      "format": "\uf294 {status}",
+      "format-off": "\uE1A9",
+      "format-on": " -",
+      "format-connected": " {device_alias}",
+      "format-connected-battery": " {device_alias} - {device_battery_percentage}%",
+      "tooltip-format-connected": "{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+      "tooltip-format-enumerate-connected-battery": "{device_alias} - {device_battery_percentage}%"
+    },
+    "clock": {
+      "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+      "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+      "format": "  {usage}%",
+      "tooltip": false
+    },
+    "memory": {
+      "format": "{}%  "
+    },
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{icon}  {capacity}%",
+      "format-full": "{icon}  {capacity}%",
+      "format-charging": "\uE1A3 {capacity}%",
+      "format-plugged": "  {capacity}%",
+      "format-alt": "{time} {icon}",
+      "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+      "format-wifi": "  {signalStrength}%",
+      "format-ethernet": "{cidr} ",
+      "tooltip-format": "{ifname} via {gwaddr} ",
+      "format-linked": "{ifname} (No IP) ",
+      "format-disconnected": " ⚠ ",
+      "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "niri/window": {
+      "max-length": 55,
+      "separate-outputs": true,
+    },
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-bluetooth": "{volume}% {icon} ",
+      "format-bluetooth-muted": "{volume}% {icon} ",
+      "format-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "\uf025",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", ""]
+      },
+      "on-click": "pavucontrol"
+    },
+}
