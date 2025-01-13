@@ -1,9 +1,9 @@
 # terminal emulator
 super + Return
-    WINIT_HIDPI_FACTOR=1 /home/tanuj/.cargo/bin/alacritty
+    WINIT_HIDPI_FACTOR=1 /usr/bin/alacritty
 
 super + shift + Return
-    /home/tanuj/.cargo/bin/alacritty
+    /usr/bin/alacritty
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -89,12 +89,12 @@ super + shift +Next
 
 # focus the next/previous desktop in the current monitor
 # Programmer Dvorak layout
-super + {exclam, numbersign}
-	bspc desktop -f {prev,next}
+super + {exclam, numbersign, asciicircum}
+	bspc desktop -f {prev,next,next}
 
 # Focus the next/prev *occupied* desktop as above
-super + shift + {exclam, numbersign}
-	bspc desktop -f {prev,next}.local.occupied
+super + shift + {exclam, numbersign, asciicircum}
+	bspc desktop -f {prev,next,next}.local.occupied
 
 # focus the last desktop
 super + Tab
