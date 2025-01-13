@@ -15,4 +15,4 @@ for desktop in $(bspc query -D); do
     done
 done
 
-telegram-desktop "$@"
+~/.nix-profile/bin/telegram-desktop "$@"
