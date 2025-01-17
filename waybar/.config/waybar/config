@@ -6,11 +6,11 @@
     "margin-right": 5,
     "height" : 30,
     "modules-left": [
+      "niri/workspaces",
       "mpris",
-      "niri/window",
     ],
     "modules-center": [
-      "niri/workspaces",
+      "niri/window",
     ],
     "modules-right": [
     "pulseaudio",

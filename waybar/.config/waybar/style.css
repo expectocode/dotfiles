@@ -33,7 +33,7 @@ button:hover {
 
 #workspaces button {
   padding: 0 5px;
-  margin: 1 3px;
+  margin: 1px 3px;
   border-radius: 15px;
   background-color: transparent;
 }
@@ -110,10 +110,10 @@ button:hover {
   padding: 0 20px;
 }
 
-#window {
+#workspaces {
   background-color: @base;
   border-radius: 15px;
-  padding: 0 20px;
+  padding: 0 5px;
 }
 
 .modules-right,
