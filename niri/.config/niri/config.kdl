@@ -228,7 +228,8 @@ layout {
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
 spawn-at-startup "swaybg" "-i" "Pictures/eighties-bg-alphabet-1440p.png"
-spawn-at-startup "waybar"
+// TODO replace dunst systemd
+spawn-at-startup "mako"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -318,6 +319,10 @@ binds {
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock" "-c" "000000"; }
     Mod+Shift+G { spawn "~/.nix-profile/bin/telegram-desktop"; }
+    Mod+Shift+D { spawn "~/scripts/niri-fuzzel-switcher.sh"; }
+    Mod+Shift+B { spawn "firefox"; }
+
+    Ctrl+Space { spawn "makoctl" "dismiss"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -371,8 +376,8 @@ binds {
     Mod+Ctrl+Up    { focus-monitor-up; }
     Mod+Ctrl+Right { focus-monitor-right; }
     Mod+Ctrl+H     { focus-monitor-left; }
-    // Mod+Ctrl+N     { focus-monitor-down; }
-    // Mod+Ctrl+T     { focus-monitor-up; }
+    Mod+Ctrl+N     { focus-monitor-down; }
+    Mod+Ctrl+T     { focus-monitor-up; }
     Mod+Ctrl+S     { focus-monitor-right; }
 
     Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
