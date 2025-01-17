@@ -523,8 +523,7 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
-    Mod+V       { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+Shift+Space       { toggle-window-floating; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
