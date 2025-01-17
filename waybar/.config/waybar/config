@@ -77,6 +77,10 @@
     "niri/window": {
       "max-length": 55,
       "separate-outputs": true,
+      "rewrite": {
+        "(.*) — Mozilla Firefox": "🦊 $1",
+        "tanuj@f: (.*)": " $1",
+      },
     },
     "pulseaudio": {
       "format": "{icon} {volume}%",
