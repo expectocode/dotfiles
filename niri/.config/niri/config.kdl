@@ -16,7 +16,9 @@ input {
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
             layout "us"
-            options "compose:ralt"
+            // Hack for switching to laptop keyboard without per-keyboard config
+//            variant "dvp"
+            options "compose:ralt, ctrl:nocaps"
         }
     }
 
@@ -110,6 +112,7 @@ output "DP-3" {
 output "eDP-1" {
     mode "1920x1080"
     position x=3200 y=1440
+    scale 1
 }
 
 
@@ -241,7 +244,8 @@ prefer-no-csd
 // You can change the path where screenshots are saved.
 // A ~ at the front will be expanded to the home directory.
 // The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+// screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path null
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
@@ -336,6 +340,7 @@ binds {
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
     Mod+backspace { close-window; }
+    Mod+semicolon { close-window; }
 
     Mod+Comma { focus-column-left; }
     Mod+Period { focus-column-right; }
@@ -534,6 +539,8 @@ binds {
     // Mod+Shift+Space { switch-layout "prev"; }
 
     MouseForward { screenshot; }
+    // Page down using mouse button
+    MouseBack { spawn "ydotool" "key" "109:1" "109:0"; }
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
