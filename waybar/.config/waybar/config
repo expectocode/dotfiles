@@ -86,7 +86,7 @@
       "format": "{icon} {volume}%",
       "format-bluetooth": "{volume}% {icon} ",
       "format-bluetooth-muted": "{volume}% {icon} ",
-      "format-muted": "",
+      "format-muted": "{icon} {volume}%",
       "format-icons": {
         "headphone": "",
         "hands-free": "",
