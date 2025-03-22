@@ -17,7 +17,7 @@ input {
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
             layout "us"
             // Hack for switching to laptop keyboard without per-keyboard config
-//            variant "dvp"
+            // variant "dvp"
             options "compose:ralt, ctrl:nocaps"
         }
     }
@@ -34,6 +34,7 @@ input {
         // accel-profile "flat"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
+        tap-button-map "left-middle-right"
     }
 
     mouse {
@@ -100,19 +101,32 @@ input {
     position x=1280 y=0
 }
 
-output "DP-5" {
+// These three sections are my 27inch and 24inch dock setup.
+/-output "DP-5" {
     mode "2560x1440"
     position x=0 y=0
 }
 
-output "DP-3" {
+/-output "DP-3" {
     mode "2560x1440"
     position x=2560 y=0
 }
 
-output "eDP-1" {
+/-output "eDP-1" {
     mode "1920x1080"
     position x=3200 y=1440
+    scale 1
+}
+
+// This is just the 24inch
+output "DP-1" {
+    mode "2560x1440"
+    position x=0 y=0
+}
+
+output "eDP-1" {
+    mode "1920x1080"
+    position x=2560 y=1200
     scale 1
 }
 
@@ -282,6 +296,12 @@ window-rule {
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    open-floating true
+}
+
+// telegram media viewer float
+window-rule {
+    match app-id="org.telegram.desktop" title="Media viewer"
     open-floating true
 }
 
@@ -540,7 +560,8 @@ binds {
     // Mod+Space       { switch-layout "next"; }
     // Mod+Shift+Space { switch-layout "prev"; }
 
-    MouseForward { screenshot; }
+    // MouseForward { spawn "bash" "-c" "grim -g \"$(slurp)\" - | wl-copy"; }
+    MouseForward { spawn "bash" "-c" "grim -g \"$(slurp)\" - | ~/src/gemclip/target/debug/gemclip --mime-type 'image/png' copy"; }
     // Page down using mouse button
     MouseBack { spawn "ydotool" "key" "109:1" "109:0"; }
     Print { screenshot; }
