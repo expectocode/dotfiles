@@ -130,6 +130,13 @@ output "eDP-1" {
     scale 1
 }
 
+// WP TV
+output "DP-2" {
+  mode "1920x1080"
+  position x=2560 y=0
+  scale 1
+}
+
 
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
