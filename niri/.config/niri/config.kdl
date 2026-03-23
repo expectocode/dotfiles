@@ -368,6 +368,13 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
+
+    XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    // KDE connect audio stuff
+    Alt+XF86AudioRaiseVolume allow-when-locked=true { spawn "playerctl" "volume" "0.05+"; }
+    Alt+XF86AudioLowerVolume allow-when-locked=true { spawn "playerctl" "volume" "0.05-"; }
+
+
     Mod+backspace { close-window; }
     Mod+semicolon { close-window; }
 
