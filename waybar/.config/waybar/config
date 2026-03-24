@@ -75,7 +75,7 @@
       "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "niri/window": {
-      "max-length": 55,
+      "max-length": 65,
       "separate-outputs": true,
       "rewrite": {
         "(.*) — Mozilla Firefox": "🦊 $1",
