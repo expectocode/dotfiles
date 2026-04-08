@@ -164,3 +164,7 @@ label:focus {
 #pulseaudio.muted {
   color: gray;
 }
+
+#backlight {
+    color: #fff;
+}

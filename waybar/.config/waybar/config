@@ -16,6 +16,7 @@
     "pulseaudio",
     "bluetooth",
     "battery",
+    "backlight",
     "clock",
     ],
 //    "bluetooth": {
@@ -65,6 +66,19 @@
       "format-plugged": "  {capacity}%",
       "format-alt": "{time} {icon}",
       "format-icons": ["", "", "", "", ""]
+    },
+    "backlight": {
+      "device": "intel_backlight",
+      //"exec": "/tmp/o.sh",
+      "format": "{percent}% {icon}",
+      // "format": "{}",
+    "on-scroll-up":   "brightnessctl s 1%+",
+    "on-scroll-down": "brightnessctl s 1%-",
+    "on-click-right": "brightnessctl s 10%",
+    "on-click": "brightnessctl s 100%",
+
+      "format-icons": ["", ""]
+
     },
     "network": {
       "format-wifi": "  {signalStrength}%",

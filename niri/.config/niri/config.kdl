@@ -368,12 +368,18 @@ binds {
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
+    // bluetooth
+    Super+XF86AudioRaiseVolume allow-when-locked=true { spawn "~/scripts/bluetooth-vol.sh" "up"; }
+    Super+XF86AudioLowerVolume allow-when-locked=true { spawn "~/scripts/bluetooth-vol.sh" "down"; }
+    Super+XF86AudioMute        allow-when-locked=true { spawn "~/scripts/bluetooth-vol.sh" "mute"; }
 
     XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
     // KDE connect audio stuff
     Alt+XF86AudioRaiseVolume allow-when-locked=true { spawn "playerctl" "volume" "0.05+"; }
     Alt+XF86AudioLowerVolume allow-when-locked=true { spawn "playerctl" "volume" "0.05-"; }
 
+    XF86MonBrightnessUp { spawn "brightnessctl" "--device" "intel_backlight" "set" "5%+"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "--device" "intel_backlight" "set" "5%-"; }
 
     Mod+backspace { close-window; }
     Mod+semicolon { close-window; }
