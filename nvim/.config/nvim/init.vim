@@ -47,12 +47,8 @@ endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
-  " Command completion
-  Plug 'Shougo/denite.nvim'
-  " , { 'on': ['Denite', 'DeniteBufferDir', 'DeniteCursorWord', 'DeniteProjectDir'] }
-
   " Fuzzy finder
-  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'ibhagwan/fzf-lua'
 
   " Rust syntax
   Plug 'rust-lang/rust.vim'
@@ -90,7 +86,13 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-surround'
 
   " undo tree
-  Plug 'sjl/gundo.vim'
+  Plug 'mbbill/undotree'
+
+  " Now we're really IDE: file tree
+  Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'akinsho/bufferline.nvim'
+
+  Plug 'famiu/bufdelete.nvim'
 
   " Tabulize data
   Plug 'godlygeek/tabular'
@@ -99,15 +101,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'LnL7/vim-nix'
 
   " LSP
-  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-  Plug 'autozimu/LanguageClient-neovim', {
-      \ 'branch': 'next',
-      \ 'do': 'bash install.sh',
-      \ }
-
-  " To quickly go back from "go to definition"
-  Plug 'ipod825/vim-tabdrop'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'saghen/blink.cmp', { 'tag': 'v1.*' }
 
   " Alignment
   Plug 'tommcdo/vim-lion'
@@ -118,56 +113,103 @@ call plug#begin(stdpath('data') . '/plugged')
   " Git assist
   Plug 'tpope/vim-fugitive'
 
-  "Emoji insertion
-  "actually, no.
-  "Plug 'fszymanski/deoplete-emoji'
-
 call plug#end()
-" plug#end() runs `filetype plugin indent on` and `syntax enable` for you,
-" and auto-installs anything listed above that isn't fetched yet.
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
 
-"End vim-plug Scripts-------------------------
+"End vim-plug -------------------------
+
+" Buffer line config
+lua << EOF
+require('bufferline').setup({
+  options = {
+    offsets = { { filetype = 'NvimTree', text = 'Files' } },
+
+    diagnostics = 'nvim_lsp',
+    diagnostics_update_in_insert = false,
+    diagnostics_indicator = function(count, level)
+      return (level:match('error') and ' E' or ' W') .. count
+    end,
+
+    -- plain-text icons, no Nerd Font required
+    buffer_close_icon = 'x',
+    close_icon = 'X',
+    modified_icon = '+',
+    separator_style = { '|', '|' },
+  },
+})
+EOF
+nnoremap <S-l> :BufferLineCycleNext<CR>
+nnoremap <S-h> :BufferLineCyclePrev<CR>
+
+nnoremap <C-;> <cmd>Bdelete<CR>
+
+lua << EOF
+require('nvim-tree').setup({
+  view = { width = 32 },
+  update_focused_file = { enable = true },
+  renderer = { icons = { show = { file = false, folder = false } } }, -- no icons
+})
+EOF
+nnoremap <F3> :NvimTreeToggle<CR>
+
+lua << EOF
+-- completion engine
+require('blink.cmp').setup({
+  keymap = { preset = 'default' },
+  sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
+  fuzzy = { implementation = 'lua' },
+})
+
+-- zuban has no entry in nvim-lspconfig's catalogue
+vim.lsp.config('zubanls', {
+  cmd = { 'zuban', 'server' },
+  filetypes = { 'python' },
+  root_markers = { 'pyproject.toml', 'mypy.ini', 'setup.cfg', '.git' },
+})
+
+vim.lsp.enable({ 'rust_analyzer', 'clangd', 'gopls', 'ruff', 'zubanls' })
+
+vim.diagnostic.config({
+  virtual_lines = { current_line = true },
+  underline = true,
+  severity_sort = true,
+})
+vim.o.completeopt = 'menu,menuone,noselect'
+vim.o.winborder='rounded'
+
+-- hover, because dvorak remaps have taken K
+vim.keymap.set('n', 'M', vim.lsp.buf.hover)
+vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format() end)
+EOF
 
 " Colorscheme has to come after plug#end() so base16-vim is on the runtimepath.
 " silent! so a fresh install without the plugin yet doesn't throw.
+set termguicolors
 silent! colorscheme base16-eighties
+
+" has to come after colorscheme
+highlight BufferLineBufferSelected gui=NONE
 
 " Autoformat
 let g:formatdef_prettier_ts = "'npx prettier --parser typescript'"
 let g:formatters_typescript = ['prettier_ts']
 let g:formatters_typescriptreact = ['prettier_ts']
 
-" Deoplete
-" call deoplete#enable()
-" let g:deoplete#sources#rust#racer_binary='/home/tanuj/.cargo/bin/racer'
-" let g:deoplete#sources#rust#rust_source_path='/home/tanuj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-
-" deoplete tab-complete
-" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-" Go to definition on C-], return on C-t
-nnoremap <C-]> :call Gotodef()<CR>
-nmap <C-t> :TabdropPopTag<Cr>
-
-function! Gotodef()
-    TabdropPushTag
-    call LanguageClient_textDocument_definition({'gotoCmd': 'Tabdrop'})
-endfunction
-
-" Denite up/down
-call denite#custom#map('insert', 'j', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', 'k', '<denite:move_to_previous_line>', 'noremap')
-map <space>bb :Denite buffer<cr>
-
 " let g:rustfmt_command="rustfmt --edition 2021"
 " Cargo fmt
 nmap <C-f> :Autoformat<CR>
 
-" CtrlP
-let g:ctrlp_follow_symlinks = 1
-" let g:ctrlp_show_hidden = 1
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+" rg for grep
+set grepprg=rg\ --vimgrep\ --smart-case
+set grepformat=%f:%l:%c:%m
+
+nnoremap <C-p> <cmd>FzfLua live_grep<cr>
+nnoremap <C-a> <cmd>FzfLua files<cr>
+nnoremap <C-b> <cmd>FzfLua buffers<cr>
+nnoremap <C-s> <cmd>FzfLua lsp_document_symbols<cr>
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -190,14 +232,10 @@ nmap <silent> <C-Down> :resize +5<CR>
 nmap <silent> <C-Left> :vertical resize +5<CR>
 nmap <silent> <C-Right> :vertical resize -5<CR>
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rust-analyzer'],
-    \ 'python': ['pyls'],
-    \ 'cpp': ['clangd'],
-\ }
-
 " gundo
-nnoremap <F2> :GundoToggle<CR>
+nnoremap <F2> :UndotreeToggle<CR>
+set undofile
+set undodir=~/.local/state/nvim/undo
 
 " display settings
 set encoding=utf-8 " encoding used for displaying file
@@ -245,39 +283,31 @@ filetype plugin on " load the plugins for specific file types
 filetype indent on " automatically indent code
 
 
-" automatic commands
-if has('autocmd')
-        " file type specific automatic commands
-        "
-        autocmd FileType typescript,typescriptreact setlocal shiftwidth=2 softtabstop=2
+" file type specific automatic commands
+autocmd FileType typescript,typescriptreact setlocal shiftwidth=2 softtabstop=2
 
-        " Jamal FPSP simulator source files
-        autocmd BufRead,BufNewFile *.jss setlocal filetype=jss
+" disable automatic code indentation when editing TeX and XML files
+autocmd FileType tex,xml setlocal indentexpr=
 
+" Disable expandtab for Go
+autocmd FileType go setlocal noexpandtab
 
-        " disable automatic code indentation when editing TeX and XML files
-        autocmd FileType tex,xml setlocal indentexpr=
+" clean-up commands that run automatically on write; use with caution
 
-        " Disable expandtab for Go
-        autocmd FileType go setlocal noexpandtab
+" delete empty or whitespaces-only lines at the end of file
+autocmd BufWritePre * :%s/\(\s*\n\)\+\%$//ge
 
-        " clean-up commands that run automatically on write; use with caution
+" replace groups of empty or whitespaces-only lines with one empty line
+"autocmd BufWritePre * :%s/\(\s*\n\)\{3,}/\r\r/ge
 
-        " delete empty or whitespaces-only lines at the end of file
-        autocmd BufWritePre * :%s/\(\s*\n\)\+\%$//ge
-
-        " replace groups of empty or whitespaces-only lines with one empty line
-        "autocmd BufWritePre * :%s/\(\s*\n\)\{3,}/\r\r/ge
-
-        " delete any trailing whitespaces
-        autocmd BufWritePre * :%s/\s\+$//ge
-endif
+" delete any trailing whitespaces
+autocmd BufWritePre * :%s/\s\+$//ge
 
 " Insert close brace when typing open brace
 inoremap {<CR> {<CR>}<C-o>O
 
 " vim-plug generates helptags on install/update, so these aren't needed for
-" the plugins above. Kept in case anything lives in 
+" the plugins above. Kept in case anything lives in
 packloadall
 silent! helptags ALL
 
