@@ -35,129 +35,115 @@ noremap K Nzz
 
 if !exists('g:vscode')  " nearly everything should be non-vscode
 
-colorscheme base16-eighties
+" Begin vim-plug section -------------------------
 
-" Begin dein section
-" Required:
-set runtimepath+=/home/tanuj/.local/share/dein/repos/github.com/Shougo/dein.vim
+" Bootstrap vim-plug itself if it isn't installed yet
+let s:plug_file = stdpath('data') . '/site/autoload/plug.vim'
+if empty(glob(s:plug_file))
+  silent execute '!curl -fLo ' . shellescape(s:plug_file) . ' --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Required:
-if dein#load_state('/home/tanuj/.local/share/dein')
-  call dein#begin('/home/tanuj/.local/share/dein')
-
-  " Let dein manage dein
-  " Required:
-  call dein#add('/home/tanuj/.local/share/dein/repos/github.com/Shougo/dein.vim')
+call plug#begin(stdpath('data') . '/plugged')
 
   " Command completion
-  call dein#add('Shougo/denite.nvim')
-  " , {'on_cmd': ['Denite', 'DeniteBufferDir', 'DeniteCursorWord', 'DeniteProjectDir']})
+  Plug 'Shougo/denite.nvim'
+  " , { 'on': ['Denite', 'DeniteBufferDir', 'DeniteCursorWord', 'DeniteProjectDir'] }
 
   " Fuzzy finder
-  call dein#add('ctrlpvim/ctrlp.vim')
+  Plug 'ctrlpvim/ctrlp.vim'
 
   " Rust syntax
-  call dein#add('rust-lang/rust.vim')
+  Plug 'rust-lang/rust.vim'
 
   " Elixir
-  call dein#add('elixir-editors/vim-elixir')
+  Plug 'elixir-editors/vim-elixir'
 
   " Class outline viewer
-  call dein#add('majutsushi/tagbar')
+  Plug 'majutsushi/tagbar'
 
   " QML syntax
-  call dein#add('peterhoeg/vim-qml')
+  Plug 'peterhoeg/vim-qml'
 
   " Go syntax
-  call dein#add('fatih/vim-go')
+  Plug 'fatih/vim-go'
 
   " Haskell syntax
-  call dein#add('neovimhaskell/haskell-vim')
+  Plug 'neovimhaskell/haskell-vim'
 
   " TOML syntax
-  call dein#add('cespare/vim-toml')
+  Plug 'cespare/vim-toml'
 
   " Pest syntax
-  call dein#add('pest-parser/pest.vim')
+  Plug 'pest-parser/pest.vim'
 
   " Base 16 colors
-  call dein#add('chriskempson/base16-vim')
+  Plug 'chriskempson/base16-vim'
+
   " Autoformat for different langs
-  call dein#add('vim-autoformat/vim-autoformat')
+  Plug 'vim-autoformat/vim-autoformat'
 
-  let g:formatdef_prettier_ts = "'npx prettier --parser typescript'"
-  let g:formatters_typescript = ['prettier_ts']
-  let g:formatters_typescriptreact = ['prettier_ts']
-
-  " Dein command
-  call dein#add('haya14busa/dein-command.vim')
   " commenting
-  call dein#add('tpope/vim-commentary')
+  Plug 'tpope/vim-commentary'
   " surroundings
-  call dein#add('tpope/vim-surround')
+  Plug 'tpope/vim-surround'
 
   " undo tree
-  call dein#add('sjl/gundo.vim')
+  Plug 'sjl/gundo.vim'
 
   " Tabulize data
-  call dein#add('godlygeek/tabular')
+  Plug 'godlygeek/tabular'
 
   " nix
-  call dein#add('LnL7/vim-nix')
+  Plug 'LnL7/vim-nix'
 
-  " Autocomplete
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
+  " LSP
+  " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
-  let g:deoplete#enable_at_startup = 1 " for languageclient completion
-
-  call dein#add('autozimu/LanguageClient-neovim', {
-      \ 'rev': 'next',
-      \ 'build': 'bash install.sh',
-      \ })
+  Plug 'autozimu/LanguageClient-neovim', {
+      \ 'branch': 'next',
+      \ 'do': 'bash install.sh',
+      \ }
 
   " To quickly go back from "go to definition"
-  call dein#add('ipod825/vim-tabdrop')
+  Plug 'ipod825/vim-tabdrop'
 
   " Alignment
-  call dein#add('tommcdo/vim-lion')
-
+  Plug 'tommcdo/vim-lion'
 
   " Startup profiler
-  call dein#add('tweekmonster/startuptime.vim')
+  Plug 'tweekmonster/startuptime.vim'
 
   " Git assist
-  call dein#add('tpope/vim-fugitive')
+  Plug 'tpope/vim-fugitive'
 
   "Emoji insertion
   "actually, no.
-  "call dein#add('fszymanski/deoplete-emoji')
+  "Plug 'fszymanski/deoplete-emoji'
 
-  " Required:
-  call dein#end()
-  call dein#save_state()
-endif
+call plug#end()
+" plug#end() runs `filetype plugin indent on` and `syntax enable` for you,
+" and auto-installs anything listed above that isn't fetched yet.
 
-" Required:
-filetype plugin indent on
-syntax enable
+"End vim-plug Scripts-------------------------
 
-if dein#check_install()
-  call dein#install()
-endif
+" Colorscheme has to come after plug#end() so base16-vim is on the runtimepath.
+" silent! so a fresh install without the plugin yet doesn't throw.
+silent! colorscheme base16-eighties
 
-"End dein Scripts-------------------------
+" Autoformat
+let g:formatdef_prettier_ts = "'npx prettier --parser typescript'"
+let g:formatters_typescript = ['prettier_ts']
+let g:formatters_typescriptreact = ['prettier_ts']
 
 " Deoplete
-call deoplete#enable()
+" call deoplete#enable()
 " let g:deoplete#sources#rust#racer_binary='/home/tanuj/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/tanuj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+" let g:deoplete#sources#rust#rust_source_path='/home/tanuj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
 " deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Go to definition on C-], return on C-t
 nnoremap <C-]> :call Gotodef()<CR>
@@ -254,7 +240,7 @@ let mapleader = ","
 set scrollback=10000
 
 " file type specific settings
-"filetype on " enable file type detection - vundle doesnt like this on
+"filetype on " enable file type detection
 filetype plugin on " load the plugins for specific file types
 filetype indent on " automatically indent code
 
@@ -290,14 +276,9 @@ endif
 " Insert close brace when typing open brace
 inoremap {<CR> {<CR>}<C-o>O
 
-" Put these lines at the very end of your vimrc file, for plugin :help
-
-" Load all plugins now.
-" Plugins need to be added to runtimepath before helptags can be generated.
+" vim-plug generates helptags on install/update, so these aren't needed for
+" the plugins above. Kept in case anything lives in 
 packloadall
-
-" Load all of the helptags now, after plugins have been loaded.
-" All messages and errors will be ignored.
 silent! helptags ALL
 
 endif " VS code
