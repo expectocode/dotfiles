@@ -158,19 +158,28 @@ nnoremap <F3> :NvimTreeToggle<CR>
 lua << EOF
 -- completion engine
 require('blink.cmp').setup({
-  keymap = { preset = 'default' },
+  keymap = {
+      preset = 'enter',
+      ['<Tab>'] = { 'select_next', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+  },
   sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
   fuzzy = { implementation = 'lua' },
+   completion = {
+      list = {
+        selection = { preselect = false, auto_insert = true },
+      },
+    },
 })
 
--- zuban has no entry in nvim-lspconfig's catalogue
+-- LSPs with no entry in nvim-lspconfig's catalogue
 vim.lsp.config('zubanls', {
   cmd = { 'zuban', 'server' },
   filetypes = { 'python' },
   root_markers = { 'pyproject.toml', 'mypy.ini', 'setup.cfg', '.git' },
 })
 
-vim.lsp.enable({ 'rust_analyzer', 'clangd', 'gopls', 'ruff', 'zubanls' })
+vim.lsp.enable({ 'rust_analyzer', 'clangd', 'gopls', 'ruff', 'zubanls', 'djlsp' })
 
 vim.diagnostic.config({
   virtual_lines = { current_line = true },
@@ -185,6 +194,7 @@ vim.keymap.set('n', 'M', vim.lsp.buf.hover)
 vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format() end)
 EOF
 
+
 " Colorscheme has to come after plug#end() so base16-vim is on the runtimepath.
 " silent! so a fresh install without the plugin yet doesn't throw.
 set termguicolors
@@ -197,6 +207,8 @@ highlight BufferLineBufferSelected gui=NONE
 let g:formatdef_prettier_ts = "'npx prettier --parser typescript'"
 let g:formatters_typescript = ['prettier_ts']
 let g:formatters_typescriptreact = ['prettier_ts']
+let g:formatdef_djlint = '"djlint --reformat --quiet -"'
+let g:formatters_htmldjango = ['djlint']
 
 " let g:rustfmt_command="rustfmt --edition 2021"
 " Cargo fmt
@@ -285,6 +297,9 @@ filetype indent on " automatically indent code
 
 " file type specific automatic commands
 autocmd FileType typescript,typescriptreact setlocal shiftwidth=2 softtabstop=2
+
+" set djangohtml filetype
+autocmd BufRead,BufNewFile */templates/*.html setfiletype htmldjango
 
 " disable automatic code indentation when editing TeX and XML files
 autocmd FileType tex,xml setlocal indentexpr=
