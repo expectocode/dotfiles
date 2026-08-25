@@ -274,6 +274,9 @@ set confirm " confirm :q in case of unsaved changes
 set fileencoding=utf-8 " encoding used when saving file
 set nobackup " do not keep the backup~ file
 
+" show trailing whitespace
+set list
+set listchars=trail:-
 
 " edit settings
 set backspace=indent,eol,start " backspacing over everything in insert mode
