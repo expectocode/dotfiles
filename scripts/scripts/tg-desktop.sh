@@ -2,17 +2,10 @@
 export QT_QPA_PLATFORMTHEME=qgnomeplatform
 
 
-# Switch to tg if it's open (then exit script)
+tg_id=$(niri msg -j windows | jq '.[] | select(.app_id == "org.telegram.desktop") | .id')
+if [[ ! -z "$tg_id" ]]; then
+    niri msg action focus-window --id "$tg_id"
+    exit
+fi
 
-for desktop in $(bspc query -D); do
-    for nid in $(bspc query -N -d "$desktop" -n .window); do
-        case $(xtitle "$nid") in
-            *"Telegram ("*)
-                bspc desktop "$desktop" -f
-                bspc node -f "$nid"
-                exit
-        esac
-    done
-done
-
-~/.nix-profile/bin/telegram-desktop "$@"
+~/.nix-profile/bin/Telegram "$@"

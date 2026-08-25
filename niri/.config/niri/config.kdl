@@ -352,7 +352,7 @@ binds {
     Mod+D { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock" "-c" "000000"; }
     Super+Shift+L { spawn "~/scripts/lock_hibernate.sh"; }
-    Mod+Shift+G { spawn "~/.nix-profile/bin/telegram-desktop"; }
+    Mod+Shift+G { spawn "~/scripts/tg-desktop.sh"; }
     Mod+Shift+D { spawn "~/scripts/niri-fuzzel-switcher.sh"; }
     Mod+Shift+B { spawn "firefox"; }
 
