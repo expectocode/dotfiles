@@ -15,9 +15,9 @@ input {
             // For example:
             // layout "us,ru"
             // options "grp:win_space_toggle,compose:ralt,ctrl:nocaps"
-            layout "tanuj-us"
+            layout "tanuj-us,tanuj-us"
             // Hack for switching to laptop keyboard without per-keyboard config
-            // variant "dvp"
+            variant "dvp,"
             options "compose:ralt, ctrl:nocaps"
         }
     }
@@ -251,7 +251,6 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "swaybg" "-i" "~/Pictures/eighties-bg-alphabet-1440p.png"
 // TODO replace dunst systemd
 spawn-at-startup "mako"
 
@@ -580,8 +579,8 @@ binds {
     // a matching layout switch hotkey configured in xkb options above.
     // Having both at once on the same hotkey will break the switching,
     // since it will switch twice upon pressing the hotkey (once by xkb, once by niri).
-    // Mod+Space       { switch-layout "next"; }
-    // Mod+Shift+Space { switch-layout "prev"; }
+    Mod+m       { switch-layout "next"; }
+    Mod+Shift+m { switch-layout "prev"; }
 
     // MouseForward { spawn "bash" "-c" "grim -g \"$(slurp)\" - | wl-copy"; }
     MouseForward { spawn "bash" "-c" "grim -g \"$(slurp)\" - | ~/src/gemclip/target/debug/gemclip --mime-type 'image/png' copy"; }
